@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/siubie/angularfundamental/issues"
   },
-  "homepage": "https://github.com/siubie/angularfundamental#readme"
+  "homepage": "https://github.com/siubie/angularfundamental#readme",
+  "dependencies": {
+    "gitbook": "^2.6.9"
+  }
 }
