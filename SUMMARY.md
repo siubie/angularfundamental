@@ -1,6 +1,6 @@
 # Summary
 
-1. [Pendahuluan](readme.md)
+1. [Pendahuluan](pendahuluan.md)
 2. [Arsitektur Angular](readme.md)
 3. [Memulai Angular, install, componen, module bootstrap]
 4. [interpolasi, binding(event, property), two way data binding]
