@@ -1,0 +1,24 @@
+{
+  "name": "angularfundamental",
+  "version": "1.0.0",
+  "description": "buku angular ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siubie/angularfundamental.git"
+  },
+  "keywords": [
+    "angular",
+    "book"
+  ],
+  "author": "putra prima arhandi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siubie/angularfundamental/issues"
+  },
+  "homepage": "https://github.com/siubie/angularfundamental#readme",
+  "dependencies": {}
+}
