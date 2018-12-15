@@ -78,3 +78,14 @@ typings/
 #DynamoDB Local files 
 .dynamodb/ 
 
+
+# Book build output
+_book
+
+# eBook build output
+*.epub
+*.mobi
+*.pdf
+
+## Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
