@@ -58,6 +58,9 @@ Routing pada angular berfungsi untuk menampilkan suatu spesific component berdas
 
 Module routing ini memberikan kemudahan dalam melakukan navigasi user.
 
+## Latihan
+
 ## Tugas
 1. Cari lah sebuah website, dan bagilah website tersebut menjadi component component kecil.
 2. Dari komponen komponen tersebut susunlah mana yang menjadi parent component dan child component.
+3. Desain lah sebuah component tree yang lengkap sehingga website yang anda buka tersebut dapat terbagi menjadi module, component, service, directive dan routing.

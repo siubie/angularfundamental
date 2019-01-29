@@ -1,19 +1,25 @@
 # Summary
 
-1. [Pendahuluan](pendahuluan.md)
-2. [Arsitektur Angular](readme.md)
-3. [Memulai Angular, install, componen, module bootstrap]
-4. [interpolasi, binding(event, property), two way data binding]
-5. [Q1]
-6. [ngIf, ngFor, ngClass, ngStyle, pipes, safe navigation]
-7. [Arsitektur Component, Konsep Container dan Component, one way data flow]
-8. [UTS]
-9. [Arsitektur Component, membuat container, membuat component]
-10. [Arsitektur Component, passing variabel @input, @output ]
-11. [Service, dependency injection,@injectable]
-12. [Service, Http, put delete]
-13. [Q3]
-14. [form, ngform, ngmodel]
-15. [binding radio button, checkbox, options, form validation]
-16. [routing]
-17. [UAS]
+1. [Pendahuluan](readme.md)
+2. [Intro Angular](pendahuluan.md)
+3. [Installasi Angular](install.md)
+4. [Struktur File Angular](struktur.md)
+5. [Component dalam Angular](struktur.md)
+6. [Modules dalam Angular](struktur.md)
+7. [Bootstraping dalam Angular](struktur.md)
+8. [Alur Starting Angular](struktur.md)
+9. [Interpolasi](struktur.md)
+10. [Property Binding](struktur.md)
+11. [Event Binding](struktur.md)
+12. [Template Ref](struktur.md)
+13. [ngIf](struktur.md)
+14. [ngFor](struktur.md)
+15. [ngStyle](struktur.md)
+16. [Pipes](struktur.md)
+17. [Safe Navigation](struktur.md)
+18. [Arsitektur Component](struktur.md)
+19. [Membuat Module Baru](struktur.md)
+20. [Membuat Container (Smart Component)](struktur.md)
+21. [Membuat Presentational ComponentMembuat Module Baru](struktur.md)
+22. [NgOnInit](struktur.md)
+23. [Event Emitter](struktur.md)
