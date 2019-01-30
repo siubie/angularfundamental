@@ -8,7 +8,7 @@
 6. [Modules dalam Angular](modules.md)
 7. [Alur Starting Angular](alur.md)
 8. [Interpolasi](interpolasi.md)
-9. [Property Binding](struktur.md)
+9. [Property Binding](property.md)
 10. [Event Binding](struktur.md)
 11. [Template Ref](struktur.md)
 12. [ngIf](struktur.md)
