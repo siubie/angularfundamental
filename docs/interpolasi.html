@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Component dalam Angular · GitBook</title>
+        <title>Interpolasi · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="modules.html" />
+    <link rel="next" href="property.html" />
     
     
-    <link rel="prev" href="struktur.html" />
+    <link rel="prev" href="alur.html" />
     
 
     </head>
@@ -141,7 +141,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="component.html">
+        <li class="chapter " data-level="1.5" data-path="component.html">
             
                 <a href="component.html">
             
@@ -180,7 +180,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="interpolasi.html">
+        <li class="chapter active" data-level="1.8" data-path="interpolasi.html">
             
                 <a href="interpolasi.html">
             
@@ -405,7 +405,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Component dalam Angular</a>
+        <a href="." >Interpolasi</a>
     </h1>
 </div>
 
@@ -420,66 +420,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="component-basic">Component Basic</h1>
-<p>Component adalah bagian penting dari sebuah aplikasi angular, sebuah aplikasi yang dikembangkan dengan menggunakan angular terdiri dari beberapa component yang bekerja sama.</p>
-<h2 id="langkah-percobaan">Langkah Percobaan</h2>
-<p>Untuk memulai membuat component bukalah file app.component.ts pada folder app. Perhatikan kode program yang ada :</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
-
-@Component({
-  selector: <span class="hljs-string">&quot;app-root&quot;</span>,
-  templateUrl: <span class="hljs-string">&quot;./app.component.html&quot;</span>,
-  styleUrls: [<span class="hljs-string">&quot;./app.component.css&quot;</span>]
-})
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
-  title = <span class="hljs-string">&quot;tutorial&quot;</span>;
-}
-</code></pre>
-<p>Kode program diatas adalah kode program minimal untuk membuat sebuah komponen, minimal terdiri dari sebuah class yang memiliki decorator @Component.</p>
-<p>Untuk melatih proses pembuatan component hapuslah semua kode program pada app.component.ts</p>
-<p>Langkah pertama tambahkan statement import</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
-</code></pre>
-<p>statement import ini berfungsi untuk menginclude Class Component dari library angular, kedepannya kita juga akan membutuhkan class lain namun untuk sebuah componen sederhana cukup mengimport class Component saja.</p>
-<p>selanjutnya setelah melakukan import tambahkan class yang ingin dijadikan component</p>
+                                <h1 id="interpolasi">Interpolasi</h1>
+<p>Angular menghubungkan antara data di class component dengan template html melalui sebuah proses interpolasi. Proses interpolasi ini dilakukan dengan menambahkan syntaks <code>{{ . }}</code> pada template html.</p>
+<p>Contoh sederhana interpolasi yang sudah dilakukan pada percobaan sebelumnya adalah menghubungkan antara variabel <code>title</code> pada class dengan <code>{{title}}</code> pada template html.</p>
+<p><img src="diagrams/interpolasi.png" alt="interpolasi"></p>
+<p>Semua variabel yang telah di hubungkan (binding) antara class dengan templatenya dapat diperlakukan seperti sebuah variabel javascript contohnya dapat dilakukan penjumlahan atau proses lain yang dapat dilakukan pada variabel javascript.</p>
+<h2 id="langkah-praktikum">Langkah Praktikum</h2>
+<p>Pada file AppComponent.ts buatlah beberapa variabel baru dengan memperhatikan tipe datanya karena pada angular digunakan typescript.</p>
 <pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
-  title = <span class="hljs-string">&quot;tutorial&quot;</span>;
-}
-</code></pre>
-<p>pada kode program di atas kita melakukan export terhadap sebuah class dengan nama AppComponent, rule dan konvensi untuk penamaan class adalah nama class dibuat CamelCase dan nama file menyesuaikan nama class jika nama class AppComponent maka nama file app.component.ts.</p>
-<p>pada class ini dilakukan export agar component ini dapat di import di component lain, jika tidak ada statement export maka componen / module lain.</p>
-<p>Selanjutnya untuk dapat dijadikan sebuah component class ini harus ditambahkan decorator @Component, dimana dekorator ini membutuhkan 3 parameter, parameternya adalah selector, templateUrl atau template, dan styleUrls.</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
-
-@Component({
-  selector: <span class="hljs-string">&quot;app-root&quot;</span>,
-  templateUrl: <span class="hljs-string">&quot;./app.component.html&quot;</span>,
-  styleUrls: [<span class="hljs-string">&quot;./app.component.css&quot;</span>]
-})
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
-  title = <span class="hljs-string">&quot;tutorial&quot;</span>;
-}
-</code></pre>
-<p>Pada intinya sebuah component harus memiliki class, template html, style html nya dan selector yang unik untuk memanggil componen tersebut.</p>
-<p>Template html nya dapat berada dalam satu file dengan file component atau berada di file lain.</p>
-<p>Untuk langkah selanjutnya jika sudah membuat component gantilah variabel title pada AppComponent nilainya menjadi nama anda masing masing, contoh :</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
-
-@Component({
-  selector: <span class="hljs-string">&quot;app-root&quot;</span>,
-  templateUrl: <span class="hljs-string">&quot;./app.component.html&quot;</span>,
-  styleUrls: [<span class="hljs-string">&quot;./app.component.css&quot;</span>]
-})
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
   title = <span class="hljs-string">&quot;Putra Prima Arhandi&quot;</span>;
+  panjang: <span class="hljs-built_in">Number</span> = <span class="hljs-number">10</span>;
+  lebar: <span class="hljs-built_in">Number</span> = <span class="hljs-number">10</span>;
+  isTeaBreakTime: <span class="hljs-built_in">Boolean</span> = <span class="hljs-literal">true</span>;
 }
 </code></pre>
-<p>bukalah terminal pada visual studi code anda, arahkan lokasi terminal pada root project kemudian ketikkan</p>
-<pre><code class="lang-typescript">ng serve --open
+<p>Pada kode program diatas terdapat 4 variabel title, panjang, lebar, dan isTeaBreakTime. pada variabel title dibuat tanpa tipe data dan di isi data berformat string, untuk variabel panjang dan lebar di beri tipedata Number dan pada variabel isTeaBreakTime diberi tipe data Boolean.</p>
+<p>Selanjutnya silahkan buka file app.component.html kemudian hapuslah semua isinya berikut ini tampilan awal file app.component.html</p>
+<p><img src="diagrams/appcomhtml.png" alt="appcomhtml"></p>
+<p>Hapuslah kode program diatas dan tambahkan kode program berikut ini :</p>
+<p><img src="diagrams/appcomhtmlnew.png" alt="appcomnew"></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ title }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Luas = {{ panjang }} x {{ lebar }} | {{ panjang * lebar }}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{{ isTeaBreakTime ? &quot;:)&quot; : &quot;:(&quot; }}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 </code></pre>
-<p><img src="diagrams/ngservestart.png" alt="ngserve">
-<img src="diagrams/ngservegoing.png" alt="ngserve">
-<img src="diagrams/ngserveresult.png" alt="ngserve"></p>
+<p>Berikut ini hasil jika anda mejalankan dengan benar :</p>
+<p><img src="diagrams/appcomhtmlend.png" alt="appcomhtmlend"></p>
 
                                 
                                 </section>
@@ -507,12 +472,12 @@
 
             
                 
-                <a href="struktur.html" class="navigation navigation-prev " aria-label="Previous page: Struktur File Angular">
+                <a href="alur.html" class="navigation navigation-prev " aria-label="Previous page: Alur Starting Angular">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="modules.html" class="navigation navigation-next " aria-label="Next page: Modules dalam Angular">
+                <a href="property.html" class="navigation navigation-next " aria-label="Next page: Property Binding">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -523,7 +488,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Component dalam Angular","level":"1.5","depth":1,"next":{"title":"Modules dalam Angular","level":"1.6","depth":1,"path":"modules.md","ref":"modules.md","articles":[]},"previous":{"title":"Struktur File Angular","level":"1.4","depth":1,"path":"struktur.md","ref":"struktur.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component.md","mtime":"2019-01-30T13:16:49.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-30T23:42:18.979Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Interpolasi","level":"1.8","depth":1,"next":{"title":"Property Binding","level":"1.9","depth":1,"path":"property.md","ref":"property.md","articles":[]},"previous":{"title":"Alur Starting Angular","level":"1.7","depth":1,"path":"alur.md","ref":"alur.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"interpolasi.md","mtime":"2019-01-30T15:00:33.049Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-30T23:42:18.979Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
