@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Intro Angular · GitBook</title>
+        <title>Installasi Angular · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="struktur.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="pendahuluan.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="pendahuluan.html">
+        <li class="chapter " data-level="1.2" data-path="pendahuluan.html">
             
                 <a href="pendahuluan.html">
             
@@ -115,7 +115,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="install.html">
+        <li class="chapter active" data-level="1.3" data-path="install.html">
             
                 <a href="install.html">
             
@@ -418,7 +418,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Intro Angular</a>
+        <a href="." >Installasi Angular</a>
     </h1>
 </div>
 
@@ -435,49 +435,27 @@
                                 
                                 <h1 id="kemampuan-akhir-yang-diharapkan">Kemampuan Akhir Yang Diharapkan</h1>
 <ol>
-<li>Mahasiswa memahami perbedaan antara cara pembuatan frontend dengan angular dan html biasa.</li>
-<li>Mahasiswa memahami konsep pembuatan frontend dengan angular.</li>
-<li>Mahasiswa mampu memahami konsep &quot;component&quot; dalam pembuatan frontend.</li>
+<li>Peserta dapat melakukan installasi angular.</li>
+<li>Peserta dapat menjalankan server developement angular.</li>
 </ol>
-<h1 id="pengenalan-angular">Pengenalan Angular</h1>
-<p>Angular adalah salah satu framework front end yang sedang populer saat ini, angular dikembangkan dengan bahasa pemrograman typescript.</p>
-<h2 id="angular-vs-html">Angular vs Html</h2>
-<p>Teknik pembuatan frontend untuk saat ini sudah berkembang dengan sangat pesat, pada beberapa tahun yang lalu pembuatan front end masih menggunakan view yang di render oleh server. Teknik ini menggunakan bahasa pemrograman html untuk tampilan front end dan bahasa pemrograman server side untuk mengatur tampilan dan data.</p>
-<p><img src="diagrams/alurRendering.png" alt="Alur Rendering Lama"></p>
-<p>Kemudian pada dua sampai tiga tahun terakhir pembuatan aplikasi web sudah mengarah kepada pembuatan sistem yang terbagi menjadi dua bagian yaitu back end dan front end. Angular berfokus di pengembangan front end sehingga front end yang pada beberapa tahun yang lalu hanya menampilkan data dari server sekarang sudah berubah tidak sekedar menampilkan data saja namun dapat diprogram sehingga lebih interaktif dan responsif.</p>
-<p><img src="diagrams/diagrams-Alur Rendering Angular.png" alt="Alur Rendering Baru"></p>
-<h2 id="konsep-pembuatan-front-end-dengan-angular">Konsep Pembuatan Front end Dengan Angular</h2>
-<p>Konsep pembuatan front end dengan angular sangat berbeda dengan pembuatan front end dengan html atau bahasa pemrograman server side biasa. Pada pembuatan front end dengan angular konsep yang sangat penting untuk dipahami adalah  &#x201C;Segala sesuatu yang dapat dilihat oleh user dibagi sebagai sebuah komponen&#x201D;. Komponen ini dapat digunakan kembali dan dapat dikombinasikan dengan komponen lain sehingga dapat menjadi sebuah halaman yang dapat digunakan oleh user.</p>
-<p><img src="diagrams/diagrams-halaman-web.png" alt="Contoh Component"></p>
-<h2 id="konsep-dasar-angular">Konsep Dasar Angular</h2>
-<p>Angular dibuat berdasarkan konsep component, namun tidak hanya komponen dalam sebuah project angular kita harus memahami konsep konsep dasar yang lain seperti Modules, Component, Services, Directives dan Routing. Kelima konsep inilah yang menjadi dasar pengembangan Angular.</p>
-<h3 id="modules">Modules</h3>
-<p>Setiap project angular memiliki minimal satu modules. Modules ini lah yang menjadi wadah aplikasi yang menampung component, route, service, directive dan lain lain. Project angular baru minimal memiliki satu module, modul defaultnya adalah AppModule. </p>
-<p>Sebuah Project dapat memiliki lebih dari satu module, contohnya ketika project membutuhkan routing maka dapat ditambahkan routing module. </p>
-<h3 id="component">Component</h3>
-<p>Component adalah bagian dari angular yang berisi template, data dan logic. </p>
-<p>Kode program component terdiri dari @Component annotation yang berisi selector, template, dan stylesheet untuk tampilan component ini. Setelah itu pada kode program component juga berisi class typescript yang berisi logika untuk component tersebut.</p>
-<p>Data pada component bisa didapat dari service dan dari component ini sendiri. Logic pada component dapat di isi pada kode typescript nya.</p>
-<p>Sebuah Component dapat menjadi anak dari component lain atau menjadi parent dari child component nya. Sebuah component juga dapat berinteraksi ke child atau parent nya melalui input dan event.</p>
-<h3 id="services">Services</h3>
-<p>Service pada aplikasi angular merupakan sebuah class yang bertugas melakukan sesuatu yang spesifik untuk membantu jalannya aplikasi, biasanya service digunakan oleh component melalui dependency injections.</p>
-<p>Pada aplikasi angular component dan service di pisahkan agar component berfokus pada user sedangkan service berfokus pada &quot;urusan dapur&quot; dari component&quot;.</p>
-<p>Contohnya jika terdapat sebuah component &quot;search&quot; maka proses menampilkan hasil searching itu dilakukan oleh component sedangkan proses query ke database atau ke REST API dilakukan oleh service.</p>
-<p>Perlu dipahami karena service berdiri sendiri maka sebuah service dapat digunakan berulang kali pada component yang berbeda jadi service tidak terikat pada satu component saja.</p>
-<h3 id="directives">Directives</h3>
-<p>Pada dasarnya directives adalah sebuah fungsi yang akan dieksekusi oleh angular jika fungsi tersebut ditemukan di DOM. Fungsi fungsi ini digunakan untuk menambah kemampuan halaman html dengan memberikan sintaks baru yang berasal dari directives.
-Sintaks baru ini dapat mengubah sifat html yang awalnya statis menjadi lebih dinamis.
-Directives ini sudah ada dan disiapkan oleh angular berupa default directives dan pengembang aplikasi dapat menambahkan directives baru.</p>
-<h3 id="routing">Routing</h3>
-<p>Routing pada angular berfungsi untuk menampilkan suatu spesific component berdasarkan url yang dibuka, routing merupakan sebuah module angular tersendiri yang bernama RoutingModule.</p>
-<p>Module routing ini memberikan kemudahan dalam melakukan navigasi user.</p>
-<h2 id="latihan">Latihan</h2>
-<h2 id="tugas">Tugas</h2>
-<ol>
-<li>Cari lah sebuah website, dan bagilah website tersebut menjadi component component kecil.</li>
-<li>Dari komponen komponen tersebut susunlah mana yang menjadi parent component dan child component.</li>
-<li>Desain lah sebuah component tree yang lengkap sehingga website yang anda buka tersebut dapat terbagi menjadi module, component, service, directive dan routing.</li>
-</ol>
+<h1 id="install-nodejs">Install NodeJs</h1>
+<p>Versi node js yang dibutuhkan untuk dapat menjalankan aplikasi angular minimal adalah versi 8.x atau 10.x.</p>
+<h2 id="install-nodejs-windows">Install nodejs Windows</h2>
+<p>Berikut ini langkah installasi nodejs untuk sistem operasi windows :</p>
+<h2 id="install-nodejs-linux">Install nodejs Linux</h2>
+<p>Berikut ini langkah installasi nodejs untuk sistem operasi linux :</p>
+<h2 id="install-nodejs-macos">Install nodejs MacOs</h2>
+<p>Berikut ini langkah installasi nodejs untuk sistem operasi macOs :</p>
+<h1 id="install-angular-cli">Install Angular CLI</h1>
+<p>Angular CLI digunakan untuk membuat project baru dan kode program angular, oleh karena itu angular CLI harus di install secara global melalui node package manager anda, untuk melakukan installasi ketikkan perintah berikut ini pada command line :</p>
+<pre><code class="lang-terminal">npm install -g @angular/cli
+</code></pre>
+<p>Lamanya proses installasi tergantung pada kecepatan koneksi internet anda silahkan tunggu sampai semua proses selesai.</p>
+<p>Perlu diperhatikan jangan melakukan perintah installasi angular CLI saat terminal / command line anda login sebagai root atau administrator.</p>
+<h1 id="buat-project-angular-dengan-angular-cli">Buat Project Angular dengan Angular CLI</h1>
+<p>Untuk membuat project baru menggunakan angular cli dapat dilakukan dengan mengetik perintah berikut ini pada command line / terminal.</p>
+<pre><code>ng new my-app
+</code></pre><h1 id="ng-serve---open">ng serve --open</h1>
 
                                 
                                 </section>
@@ -505,12 +483,12 @@ Directives ini sudah ada dan disiapkan oleh angular berupa default directives da
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Pendahuluan">
+                <a href="pendahuluan.html" class="navigation navigation-prev " aria-label="Previous page: Intro Angular">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="install.html" class="navigation navigation-next " aria-label="Next page: Installasi Angular">
+                <a href="struktur.html" class="navigation navigation-next " aria-label="Next page: Struktur File Angular">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -521,7 +499,7 @@ Directives ini sudah ada dan disiapkan oleh angular berupa default directives da
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Intro Angular","level":"1.2","depth":1,"next":{"title":"Installasi Angular","level":"1.3","depth":1,"path":"install.md","ref":"install.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.1","depth":1,"path":"readme.md","ref":"readme.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pendahuluan.md","mtime":"2018-12-17T03:04:56.689Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-30T01:33:10.789Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Installasi Angular","level":"1.3","depth":1,"next":{"title":"Struktur File Angular","level":"1.4","depth":1,"path":"struktur.md","ref":"struktur.md","articles":[]},"previous":{"title":"Intro Angular","level":"1.2","depth":1,"path":"pendahuluan.md","ref":"pendahuluan.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"install.md","mtime":"2019-01-29T21:49:24.839Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-30T01:33:10.789Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
