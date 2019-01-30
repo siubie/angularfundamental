@@ -4,7 +4,7 @@
 2. [Intro Angular](pendahuluan.md)
 3. [Installasi Angular](install.md)
 4. [Struktur File Angular](struktur.md)
-5. [Component dalam Angular](struktur.md)
+5. [Component dalam Angular](component.md)
 6. [Modules dalam Angular](struktur.md)
 7. [Bootstraping dalam Angular](struktur.md)
 8. [Alur Starting Angular](struktur.md)
