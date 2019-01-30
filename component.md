@@ -2,7 +2,7 @@
 
 Component adalah bagian penting dari sebuah aplikasi angular, sebuah aplikasi yang dikembangkan dengan menggunakan angular terdiri dari beberapa component yang bekerja sama.
 
-## Membuat Component
+## Langkah Percobaan
 
 Untuk memulai membuat component bukalah file app.component.ts pada folder app. Perhatikan kode program yang ada :
 
@@ -85,4 +85,4 @@ ng serve --open
 
 ![ngserve](diagrams/ngservestart.png)
 ![ngserve](diagrams/ngservegoing.png)
-![ngserve](_book/diagrams/ngserveresult.png)
+![ngserve](diagrams/ngserveresult.png)
