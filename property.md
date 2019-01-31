@@ -26,3 +26,29 @@ Selain dengan menggunakan `[]` (square bracket) property binding juga bisa dilak
 Property binding dengan cara ini merupakan model "one way data binding" dimana data mengalir satu arah dari component ke template, artinya data hanya akan berubah jika component mengubah nilai dari data tersebut template html hanya menjadi presenter atau alat untuk menampilkan data.
 
 ## Langkah Percobaan
+
+Dari percobaan sebelumnya hapuslah isi dari file app.component.html, kemudian berilah sebuah header dengan judul "Property Binding"
+
+![propertybinding](diagrams/propertybinding1.png)
+
+Selanjutnya lakukan lah binding terhadap sebuah tag html h2 yang berisi nilai dari variabel title pada component dengan cara property binding dan interpolasi.
+
+![propertybinding](diagrams/propertybinding2.png)
+
+Hasil dari kode program diatas
+
+![propertybinding](diagrams/propertybinding3.png)
+
+Dari hasil percobaan diatas terlihat binding dengan cara property binding dan interpolasi memberikan hasil yang sama.
+
+Selanjutnya buatlah sebuah tombol dengan binding attribut disabled nya ke variabel `isTeaBreakTime` seperti pada kode program dibawah ini.
+
+![propertybinding](diagrams/propertybinding4.png)
+
+Jalankan server angular anda dan lihat hasilnya pada web browser.
+
+![propertybinding](diagrams/propertybinding5.png)
+
+Perhatikan bahwa hasil binding menggunakan interpolasi pada button selalu membuat button di disable.
+
+> Interpolasi dapat digunakan sebagai property binding karena interpolasi merupakan syntactic sugar untuk mempersingkat penulisan binding, namun tidak dapat digunakan untuk nilai boolean jadi sebaiknya jika tipe data yang di binding bukan string di binding menggunakan property binding saja.

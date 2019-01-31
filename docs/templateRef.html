@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Modules dalam Angular · GitBook</title>
+        <title>Template Ref · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="alur.html" />
+    <link rel="next" href="struktur.html" />
     
     
-    <link rel="prev" href="component.html" />
+    <link rel="prev" href="event.html" />
     
 
     </head>
@@ -154,7 +154,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="modules.html">
+        <li class="chapter " data-level="1.6" data-path="modules.html">
             
                 <a href="modules.html">
             
@@ -219,7 +219,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="templateRef.html">
+        <li class="chapter active" data-level="1.11" data-path="templateRef.html">
             
                 <a href="templateRef.html">
             
@@ -405,7 +405,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Modules dalam Angular</a>
+        <a href="." >Template Ref</a>
     </h1>
 </div>
 
@@ -420,46 +420,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="angular-modules">Angular Modules</h1>
-<p>Angular memiliki sistem untuk membagi aplikasi menjadi bagian bagian kecil yang disebut module. Decorator yang digunakan untuk membuat sebuah module adalah NgModule. Module pada angular merupakan sebuah wadah yang menampung sekumpulan kode program baik component, service atau kode program lain yang bertugas menyelesaikan satu fitur atau satu domain aplikasi.</p>
-<p>Setiap aplikasi angular minimal memiliki satu modules yang diberi nama AppModule, pada AppModule ini lah di lakukan bootstrapping untuk memulai aplikasi angular.</p>
-<p>Sebuah aplikasi boleh memiliki lebih dari satu module penambahan module ini tergantung pada desain dan cara pengembangan aplikasi, dengan syarat semua module baru harus di includekan pada AppModule sebagai &quot;child&quot; dari AppModule.</p>
-<p>Berikut ini contoh kode program AppModule :</p>
-<p><img src="diagrams/AppModule.png" alt="AppModule"></p>
+                                <h1 id="template-reference">Template Reference</h1>
+<p>Template Reference adalah cara untuk mempermudah akses terhadap binding kepada suatu element.</p>
 <h2 id="langkah-percobaan">Langkah Percobaan</h2>
-<p>Perhatikan pada file AppModule.ts tetap ditambahkan beberapa statement import, yaitu BroweserModule,NgModule,AppRoutingModule dan AppComponent.</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">&quot;@angular/platform-browser&quot;</span>;
-</code></pre>
-<p>statement diatas digunakan untuk mengimport BrowserModule, module ini diperlukan untuk pengembangan aplikasi angular yang berbasis web.</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
-</code></pre>
-<p>Statement import diatas digunakan untuk mengimport Decorator NgModule, ini diperlukan untuk membuat sebuah class sebagai Module.</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { AppRoutingModule } from <span class="hljs-string">&quot;./app-routing.module&quot;</span>;
-</code></pre>
-<p>Statement ini digunakan untuk mengimport Routing Module ini digenerate otomatis oleh angular cli ketika kita memilih opsi Y ketika membuat project di chapter awal.</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { AppComponent } from <span class="hljs-string">&quot;./app.component&quot;</span>;
-</code></pre>
-<p>Statement ini digunakan untuk megimport component AppComponent, jika nanti kita menambahkan component baru maka kita harus menambahkan statement import terhadap component tersebut agar dapat digunakan oleh angular.</p>
-<pre><code class="lang-typescript">@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-</code></pre>
-<p>Statement diatas adalah Decorator @NgModule yang didapat dari import NgModule dari @angular/core. Decorator ini memiliki beberapa meta data yaitu declarations, exports, imports, providers dan bootstraps.</p>
-<ol>
-<li>Metadata declarations berisi semua component, directives ,dan pipes yang dimiliki oleh module bersangkutan. Setiap kali kita menambahkan component directive ataupun pipes maka semuanya harus di import dan di tambahkan ke declarations.</li>
-<li>Metadata exports berisi nama module yang dapat digunakan oleh ngModule lain.</li>
-<li>Metadata imports berisi module lain yang dibutuhkan oleh component yang ada pada module ini.</li>
-<li>Metadata providers biasanya berisi service yang dibutuhkan oleh module bersangkutan.</li>
-<li>Metadata bootstrap metadata khusus yang hanya dimiliki oleh root module.</li>
-</ol>
+<p>Ubahlah kode program pada file app.component.html dengan menambahkan template ref dengan nama <code>#nama</code> pada input text. Dan ganti lah parameter pada fungsi handleBlur().</p>
+<p><img src="diagrams/templateRef1.png" alt="templateRef"></p>
+<p>Selanjutnya ubah lagi kode program pada app.component.ts dengan mengganti fungsi handleBlur.</p>
+<p><img src="diagrams/templateRef2.png" alt="templateRef"></p>
+<p>Dengan kode program yang lebih rapi menggunakan template ref kita mendapatkan hasil yang sama pada halaman web.</p>
+<p><img src="diagrams/templateRef3.png" alt="templateRef"></p>
+<p><img src="diagrams/templateRef4.png" alt="templateRef"></p>
 
                                 
                                 </section>
@@ -487,12 +457,12 @@
 
             
                 
-                <a href="component.html" class="navigation navigation-prev " aria-label="Previous page: Component dalam Angular">
+                <a href="event.html" class="navigation navigation-prev " aria-label="Previous page: Event Binding">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="alur.html" class="navigation navigation-next " aria-label="Next page: Alur Starting Angular">
+                <a href="struktur.html" class="navigation navigation-next " aria-label="Next page: ngIf">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -503,7 +473,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Modules dalam Angular","level":"1.6","depth":1,"next":{"title":"Alur Starting Angular","level":"1.7","depth":1,"path":"alur.md","ref":"alur.md","articles":[]},"previous":{"title":"Component dalam Angular","level":"1.5","depth":1,"path":"component.md","ref":"component.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"modules.md","mtime":"2019-01-30T13:34:38.586Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-31T03:36:26.284Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Template Ref","level":"1.11","depth":1,"next":{"title":"ngIf","level":"1.12","depth":1,"path":"struktur.md","ref":"struktur.md","articles":[]},"previous":{"title":"Event Binding","level":"1.10","depth":1,"path":"event.md","ref":"event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"templateRef.md","mtime":"2019-01-31T03:35:59.155Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-31T03:36:26.284Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
