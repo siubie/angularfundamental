@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Event Binding · GitBook</title>
+        <title>Latihan · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="templateRef.html" />
     
-    
-    <link rel="prev" href="property.html" />
+    <link rel="prev" href="pipes.html" />
     
 
     </head>
@@ -206,7 +204,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10" data-path="event.html">
+        <li class="chapter " data-level="1.10" data-path="event.html">
             
                 <a href="event.html">
             
@@ -284,7 +282,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.16" data-path="latihan.html">
+        <li class="chapter active" data-level="1.16" data-path="latihan.html">
             
                 <a href="latihan.html">
             
@@ -327,7 +325,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Event Binding</a>
+        <a href="." >Latihan</a>
     </h1>
 </div>
 
@@ -342,37 +340,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="event-binding">Event Binding</h1>
-<p>Property binding bisa dugunakan untuk menampilkan data dari component ke template html, untuk menerima input / action dari user sebuah component dapat menggunakan Event Binding.</p>
-<p>Event binding adalah binding yang khusus untuk event yang ada pada tag html yang ada pada template, contohnya jika pada template terdapat sebuah tag input maka event binding dapat di bind ke event onBlur, onInput, onChange, onFocus dan lain lain.</p>
-<p>Untuk membuat event binding digunakan sintaks <code>()</code> yang di berikan sebuah fungsi pada class component.</p>
-<h2 id="langkah-praktikum">Langkah Praktikum</h2>
-<p>Hapuslah kode program pada file app.component.html yang ada dari percobaan sebelumnya, kemudian tambahkan kode program berikut ini.</p>
-<p><img src="diagrams/eventbinding1.png" alt="eventbinding"></p>
-<p>Kemudian jalankan server angular dengan perintah <code>ng-serve --open</code> hasilnya akan seperti gambar dibawah ini.</p>
-<p><img src="diagrams/eventbinding2.png" alt="eventbinding2"></p>
-<p>Selanjutnya tambahkan eventBinding Angular onBlur pada tag input dengan cara menambahkan <code>(blur)=handleBlur($event)</code> pada input text di app.component.html.</p>
-<p><img src="diagrams/eventbinding3.png" alt="eventbinding3"></p>
-<p>Visual studio code akan menunjukkan error pada script di app.component.html itu dikarenakan kita belum membuat function handleBlur pada component class di app.component.ts. Selanjutnya buatlah fungsi handleBlur yang akan menghandle event tersebut pada class component.</p>
-<p><img src="diagrams/eventbinding4.png" alt="eventbinding4"></p>
-<p>Pada kode program di atas kita membuat sebuah function untuk menampilkan log ke console web browser setiap kali event onBlur dipanggil. Event onBlur / blur akan dipanggil setelah kita mengetik dan beranjak dari element input. Untuk menguji nya isikanlah sebuah text ke input text pada web browser kemudian klik di area diluar input text. Maka browser akan menampilkan log berisi nilai event yang di trigger oleh onBlur.</p>
-<p><img src="diagrams/eventbinding5.png" alt="eventbinding5"></p>
-<p>Didalam object event ini terdapat banyak properties, properties yang kita inginkan adalah event.target.value dimana properties tersebut merupakan text dari input yang kita isi. Untuk melihat apakah event.target.value merupakan properties yang kita inginkan ubahlah console.log pada app.component.ts menjadi seperti dibawah ini.</p>
-<p><img src="diagrams/eventbinding6.png" alt="eventbinding6"></p>
-<p>Hasil dari kode program di atas akan seperti gambar dibawah ini dimana setiap kali kita keluar dari input text maka pada console akan di log kan sebuah value berupa text yang kita inputkan.</p>
-<p><img src="diagrams/eventbinding7.png" alt="eventbinding7"></p>
-<p>Tentusaja melakukan sebuah log ke console tidak banyak manfaatnya untuk user, untuk menampilkan perubahan nilai dari input text ke user anda dapat menggunakan interpolasi atau property binding terhadap sebuah tag html di app.component.html untuk menampilkan text tersebut. Untuk mencoba hal ini kita menggunakan variabel title yang sudah ada pada component, kemudian mengubah nilainya sesuai dengan input dari user setiap kali user melakukan event blur. Sesuaikanlah isi dari file app.component.ts dan app.component.html anda seperti gambar dibawah ini.</p>
-<p><img src="diagrams/eventbinding8.png" alt="eventbinding8">
-<img src="diagrams/eventbinding9.png" alt="eventbinding9"></p>
-<p>Hasil dari kode program di atas adalah merubah nilai h2 pada app.component.html setiap kali kita melakukan event blur pada input text.</p>
-<p><img src="diagrams/eventbinding10.png" alt="eventbinding10">
-<img src="diagrams/eventbinding11.png" alt="eventbinding11">
-<img src="diagrams/eventbinding12.png" alt="eventbinding12"></p>
-<h2 id="challenge-time">Challenge Time</h2>
-<blockquote>
-<p>Modifikasilah kode program di atas sehingga nilai title berubah setiap kali user mengetikkan text pada input.</p>
-<p>Modifikasi lah kode program di atas dengan membuatkan sebuah tombol untuk kembali me reset nilai variabel title kembali seperti semula (hints : button pada html mempunyai event onClick yang dapat di trigger menggunakan eventBinding (click))</p>
-</blockquote>
+                                <h1 id="latihan">Latihan</h1>
 
                                 
                                 </section>
@@ -400,14 +368,10 @@
 
             
                 
-                <a href="property.html" class="navigation navigation-prev " aria-label="Previous page: Property Binding">
+                <a href="pipes.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Pipes">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="templateRef.html" class="navigation navigation-next " aria-label="Next page: Template Ref">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -416,7 +380,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Event Binding","level":"1.10","depth":1,"next":{"title":"Template Ref","level":"1.11","depth":1,"path":"templateRef.md","ref":"templateRef.md","articles":[]},"previous":{"title":"Property Binding","level":"1.9","depth":1,"path":"property.md","ref":"property.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"event.md","mtime":"2019-01-31T02:52:02.395Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-02T06:33:04.050Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Latihan","level":"1.16","depth":1,"previous":{"title":"Pipes","level":"1.15","depth":1,"path":"pipes.md","ref":"pipes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"latihan.md","mtime":"2019-02-02T06:30:55.227Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-02T06:33:04.050Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
