@@ -13,7 +13,7 @@
 11. [Template Ref](templateRef.md)
 12. [Percabangan](ngIf.md)
 13. [Perulangan](ngFor.md)
-14. [ngStyle](struktur.md)
+14. [Style Binding](style.md)
 15. [Pipes](struktur.md)
 16. [Safe Navigation](struktur.md)
 17. [Arsitektur Component](struktur.md)
