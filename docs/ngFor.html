@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Event Binding · GitBook</title>
+        <title>Perulangan · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="templateRef.html" />
+    <link rel="next" href="struktur.html" />
     
     
-    <link rel="prev" href="property.html" />
+    <link rel="prev" href="ngIf.html" />
     
 
     </head>
@@ -206,7 +206,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10" data-path="event.html">
+        <li class="chapter " data-level="1.10" data-path="event.html">
             
                 <a href="event.html">
             
@@ -245,7 +245,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="ngFor.html">
+        <li class="chapter active" data-level="1.13" data-path="ngFor.html">
             
                 <a href="ngFor.html">
             
@@ -405,7 +405,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Event Binding</a>
+        <a href="." >Perulangan</a>
     </h1>
 </div>
 
@@ -420,36 +420,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="event-binding">Event Binding</h1>
-<p>Property binding bisa dugunakan untuk menampilkan data dari component ke template html, untuk menerima input / action dari user sebuah component dapat menggunakan Event Binding.</p>
-<p>Event binding adalah binding yang khusus untuk event yang ada pada tag html yang ada pada template, contohnya jika pada template terdapat sebuah tag input maka event binding dapat di bind ke event onBlur, onInput, onChange, onFocus dan lain lain.</p>
-<p>Untuk membuat event binding digunakan sintaks <code>()</code> yang di berikan sebuah fungsi pada class component.</p>
-<h2 id="langkah-praktikum">Langkah Praktikum</h2>
-<p>Hapuslah kode program pada file app.component.html yang ada dari percobaan sebelumnya, kemudian tambahkan kode program berikut ini.</p>
-<p><img src="diagrams/eventbinding1.png" alt="eventbinding"></p>
-<p>Kemudian jalankan server angular dengan perintah <code>ng-serve --open</code> hasilnya akan seperti gambar dibawah ini.</p>
-<p><img src="diagrams/eventbinding2.png" alt="eventbinding2"></p>
-<p>Selanjutnya tambahkan eventBinding Angular onBlur pada tag input dengan cara menambahkan <code>(blur)=handleBlur($event)</code> pada input text di app.component.html.</p>
-<p><img src="diagrams/eventbinding3.png" alt="eventbinding3"></p>
-<p>Visual studio code akan menunjukkan error pada script di app.component.html itu dikarenakan kita belum membuat function handleBlur pada component class di app.component.ts. Selanjutnya buatlah fungsi handleBlur yang akan menghandle event tersebut pada class component.</p>
-<p><img src="diagrams/eventbinding4.png" alt="eventbinding4"></p>
-<p>Pada kode program di atas kita membuat sebuah function untuk menampilkan log ke console web browser setiap kali event onBlur dipanggil. Event onBlur / blur akan dipanggil setelah kita mengetik dan beranjak dari element input. Untuk menguji nya isikanlah sebuah text ke input text pada web browser kemudian klik di area diluar input text. Maka browser akan menampilkan log berisi nilai event yang di trigger oleh onBlur.</p>
-<p><img src="diagrams/eventbinding5.png" alt="eventbinding5"></p>
-<p>Didalam object event ini terdapat banyak properties, properties yang kita inginkan adalah event.target.value dimana properties tersebut merupakan text dari input yang kita isi. Untuk melihat apakah event.target.value merupakan properties yang kita inginkan ubahlah console.log pada app.component.ts menjadi seperti dibawah ini.</p>
-<p><img src="diagrams/eventbinding6.png" alt="eventbinding6"></p>
-<p>Hasil dari kode program di atas akan seperti gambar dibawah ini dimana setiap kali kita keluar dari input text maka pada console akan di log kan sebuah value berupa text yang kita inputkan.</p>
-<p><img src="diagrams/eventbinding7.png" alt="eventbinding7"></p>
-<p>Tentusaja melakukan sebuah log ke console tidak banyak manfaatnya untuk user, untuk menampilkan perubahan nilai dari input text ke user anda dapat menggunakan interpolasi atau property binding terhadap sebuah tag html di app.component.html untuk menampilkan text tersebut. Untuk mencoba hal ini kita menggunakan variabel title yang sudah ada pada component, kemudian mengubah nilainya sesuai dengan input dari user setiap kali user melakukan event blur. Sesuaikanlah isi dari file app.component.ts dan app.component.html anda seperti gambar dibawah ini.</p>
-<p><img src="diagrams/eventbinding8.png" alt="eventbinding8">
-<img src="diagrams/eventbinding9.png" alt="eventbinding9"></p>
-<p>Hasil dari kode program di atas adalah merubah nilai h2 pada app.component.html setiap kali kita melakukan event blur pada input text.</p>
-<p><img src="diagrams/eventbinding10.png" alt="eventbinding10">
-<img src="diagrams/eventbinding11.png" alt="eventbinding11">
-<img src="diagrams/eventbinding12.png" alt="eventbinding12"></p>
+                                <h1 id="perulangan">Perulangan</h1>
+<p>Perulangan pada angular menggunakan sugar syntax <code>*ngFor</code>, perulangan ini dapat dilakukan dengan menggunakan dataset yang didapatkan dari component.</p>
+<p>Sintax perulangan dengan <code>*ngFor</code> dilakukan pada file template html dari sebuah component, perulangan dapat dilakukan terhadap semua tag html ataupun tag baru dari component lain.</p>
+<p>Untuk memahami perulangan dengan <code>*ngFor</code> lakukanlah langkah percobaan dibawah ini.</p>
+<h2 id="langkah-percobaaan">Langkah Percobaaan</h2>
+<p>Hapuslah kode program dari percobaan sebelumnya pada file app.component.ts kemudian ubah menjadi seperti gambar dibawah ini.</p>
+<p><img src="diagrams/ngFor1.png" alt="ngfor1"></p>
+<p>Pada kode program di atas semua kode program sebelumnya di dalam class AppComponent dihapus kemudian diisikan sebuah variabel baru dengan nama <code>todos</code> yang berupa sebuah <code>arrayOfObjects</code> dengan tipe data <code>any</code> tipe data <code>any</code> adalah tipe data yang dapat menerima semua tipe data. <code>any</code> digunakan untuk mempermudah langkah percobaan pada tahap ini, untuk production code sebaiknya kita menggunakan variabel yang memiliki tipe data.</p>
+<p>Setelah mempunyai varaibel baru, selanjutnya ubah lah file app.component.html dari kode program sebelumnya di ganti menjadi seperti gambar di bawah ini.</p>
+<p><img src="diagrams/ngFor2.png" alt="ngFor2"></p>
+<p>Pada kode program diatas kita melakukan perulangan dengan menampilkan <code>li</code> sebanyak jumlah data pada variabel <code>todos</code>, <code>*ngFor</code> dipasangkan pada tag yang melingkupi element yang akan di ulang, dalam hal ini di pasang di tag <code>ul</code></p>
+<p>Untuk melihat hasil kode program diatas jalankan server angularnya dengan perintah <code>ng-serve</code>, berikut ini hasil dari kode program diatas :</p>
+<p><img src="diagrams/ngFor3.png" alt="ngfor3"></p>
+<p>Dalam perulangan tentu saja memiliki index, index pada perulangan sama seperti index pada array yang dimulai dari nol.</p>
+<p>Untuk mencoba index pada perulangan ubahlah kode program pada app.component.html menjadi seperti pada gambar dibawah ini</p>
+<p><img src="diagrams/ngFor4.png" alt="ngfor4"></p>
+<p>setelah itu bukalah web browser dan liat perubahan apa yang terjadi.</p>
+<p><img src="diagrams/ngFor5.png" alt="ngfor5"></p>
 <h2 id="challenge-time">Challenge Time</h2>
 <blockquote>
-<p>Modifikasilah kode program di atas sehingga nilai title berubah setiap kali user mengetikkan text pada input.</p>
-<p>Modifikasi lah kode program di atas dengan membuatkan sebuah tombol untuk kembali me reset nilai variabel title kembali seperti semula (hints : button pada html mempunyai event onClick yang dapat di trigger menggunakan eventBinding (click))</p>
+<p>NgFor dan NgIf dapat digabung dalam template html, untuk memahaminya ubahlah tampilan Todo List untuk hanya menampilkan todo yang memiliki id genap atau yang ganjil saja.</p>
 </blockquote>
 
                                 
@@ -478,12 +469,12 @@
 
             
                 
-                <a href="property.html" class="navigation navigation-prev " aria-label="Previous page: Property Binding">
+                <a href="ngIf.html" class="navigation navigation-prev " aria-label="Previous page: Percabangan">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="templateRef.html" class="navigation navigation-next " aria-label="Next page: Template Ref">
+                <a href="struktur.html" class="navigation navigation-next " aria-label="Next page: ngStyle">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -494,7 +485,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Event Binding","level":"1.10","depth":1,"next":{"title":"Template Ref","level":"1.11","depth":1,"path":"templateRef.md","ref":"templateRef.md","articles":[]},"previous":{"title":"Property Binding","level":"1.9","depth":1,"path":"property.md","ref":"property.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"event.md","mtime":"2019-01-31T02:52:02.395Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-02T01:46:11.407Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Perulangan","level":"1.13","depth":1,"next":{"title":"ngStyle","level":"1.14","depth":1,"path":"struktur.md","ref":"struktur.md","articles":[]},"previous":{"title":"Percabangan","level":"1.12","depth":1,"path":"ngIf.md","ref":"ngIf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ngFor.md","mtime":"2019-02-02T01:45:14.449Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-02T01:46:11.407Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
