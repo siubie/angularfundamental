@@ -16,3 +16,14 @@
 14. [Style Binding](style.md)
 15. [Pipes](pipes.md)
 16. [Latihan](latihan.md)
+17. [Component - Container](component-container.md)
+18. [modules](create-module.md)
+19. [membuat container](create-container.md)
+20. [ngOninit](ngOnInit.md)
+21. [Presentational Component](presentational.md)
+22. [component parameter]
+23. [dynamic input]
+24. [emitting change]
+25. [immutable state]
+26. [ngOnChange]
+27. [Service dan Observable]
