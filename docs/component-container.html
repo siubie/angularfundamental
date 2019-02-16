@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Alur Starting Angular · GitBook</title>
+        <title>Component - Container · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="interpolasi.html" />
+    <link rel="next" href="create-modules.html" />
     
     
-    <link rel="prev" href="modules.html" />
+    <link rel="prev" href="latihan.html" />
     
 
     </head>
@@ -167,7 +167,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="alur.html">
+        <li class="chapter " data-level="1.7" data-path="alur.html">
             
                 <a href="alur.html">
             
@@ -297,7 +297,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.17" data-path="component-container.html">
+        <li class="chapter active" data-level="1.17" data-path="component-container.html">
             
                 <a href="component-container.html">
             
@@ -457,7 +457,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Alur Starting Angular</a>
+        <a href="." >Component - Container</a>
     </h1>
 </div>
 
@@ -472,28 +472,100 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="alur-starting-aplikasi-angular">Alur Starting Aplikasi Angular</h1>
-<p>Aplikasi angular dimulai dari file main.ts, pada file inilah dilakukan bootstraping angular. Untuk mempermudah pemahaman terhadap alur ini bukalah file main.ts pada project anda.</p>
-<p><img src="diagrams/maints.png" alt="maints"></p>
-<p>Pada kode program di atas dapat dilihat pada file main.ts hanya terdapat statement import dan fungsi untuk memulai bootstrapping.</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { enableProdMode } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
-<span class="hljs-keyword">import</span> { platformBrowserDynamic } from <span class="hljs-string">&quot;@angular/platform-browser-dynamic&quot;</span>;
-
-<span class="hljs-keyword">import</span> { AppModule } from <span class="hljs-string">&quot;./app/app.module&quot;</span>;
-<span class="hljs-keyword">import</span> { environment } from <span class="hljs-string">&quot;./environments/environment&quot;</span>;
-</code></pre>
-<p>Pada statement import diatas dimulai dengan mengimport enableProdMode, enableProdMode ini adalah library untuk mengaktifkan production mode artinya aplikasi angular yang anda jalankan sudah pada tahap production dimana pada tahap ini proses checking yang biasanya digunakan pada development mode sudah dimatikan.</p>
-<p>Selanjutnya yang di import adalah platformBrowserDynamic, library ini digunakan untuk melakukan kompilasi kode program angular di browser. Perhatikan bahwa di main.ts yang di import adalah platformBrowserDynamic bukan platformBrowser.</p>
-<p>Selanjutnya yang di import adalah module utama atau AppModule, khusus pada file ini hanya di load root module nya saja jadi pada file ini tidak boleh ada module lain. Jika anda membagi aplikasi angular ke beberapa module maka module lain ini harus menjadi anak /child dari root module ( AppModule)</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">if</span> (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(err =&gt; <span class="hljs-built_in">console</span>.error(err));
-</code></pre>
-<p>Selanjutnya dilakukan checking environment dan yang paling utama adalah dipanggil method platformBrowserDynamic yang melakukan bootstrap module AppModule. Dari AppModule bootstraping dilanjutkan ke AppComponent</p>
+                                <h1 id="container-vs-presentational">Container vs Presentational</h1>
+<p>Pada arsitektur angular terdapat dua jenis component, yang pertama adalah container dan yang kedua adalah component.</p>
+<ul>
+<li>Container (Container Component)</li>
+<li>Component (Presentational Component)</li>
+</ul>
+<h2 id="container">Container</h2>
+<p>Container adalah component yang berkomunikasi dengan service dan bertugas melakukan rendering terhadap child component nya.</p>
+<h2 id="presentational">Presentational</h2>
+<p>Presentational Component adalah component yang menerima input dari Container dan hanya bertugas menampilkan data, tanpa dapat berkomunikasi dengan service. Component ini memiliki input dan melakukan emmit change melalui event output.</p>
+<h2 id="latihan-container--presentational">Latihan Container / Presentational</h2>
+<p>Perhatikanlah kembali tugas dari materi hari sebelumnya kemudian mari kita membahas bagaimana membagi component pada aplikasi tersebut.</p>
+<p>Pada hari sebelumnya semua kode program masih di simpan di app.component.ts. Pada hari ini kita membahas bagaimana cara memisahkan component menjadi container atau presentational component.</p>
+<p>Dari screenshot aplikasi pada hari pertama anda dapat melihat sebagai berikut :</p>
+<p><img src="diagrams/container-component.png" alt="&apos;img"></p>
+<p>Dari illustrasi ini kita dapat membagi tampilan di atas menjadi beberapa component, yaitu :</p>
+<ul>
+<li>TodoComponent </li>
+<li>AddTodoComponent</li>
+<li>TodoCountComponent</li>
+<li>TodoItemComponent</li>
+</ul>
+<p>Dari ke empat component ini dapat di pisahkan menjadi Container dan Presentational Component. Yang menjadi Container Component adalah :</p>
+<ul>
+<li>TodoComponent </li>
+</ul>
+<p>Dan yang menjadi Presentational Component adalah :</p>
+<ul>
+<li>AddTodoComponent</li>
+<li>TodoCountComponent</li>
+<li>TodoItemComponent</li>
+</ul>
+<p>Seperti yang sudah dijelaskan diatas Container Component menjadi yang bertanggungjawab dalam mengatur komunikasi dengan service dan melakukan rendering terhadap child component dalam hal ini Presentational Component.</p>
+<p>Jadi TodoComponent mempunyai service yang mengatur data, serta mempunyai child AddTodoComponent, TodoCountComponent dan TodoItemComponent.</p>
+<p>AddTodoComponent adalah component yang memiliki tampilan add todo dan mempunyai output yang melakukan event emitter ke appComponent.</p>
+<p>TodoCountComponent adalah component yang memiliki tampilan counter todo. Yang berbeda pada component ini adalah dia tidak memiliki output namun memiliki input berupa data array Todos (proses melakukan count dan menampilkan dilakukan di component ini)</p>
+<p>TodoItemComponent adalah component yang menampilkan satu item component yang memiliki input berupa data satu item todo serta memiliki output berupa event untuk mengupdate status finished / unfinished</p>
+<h2 id="one-way-data-flow">One Way Data Flow</h2>
+<p><img src="diagrams/componentTree.png" alt="&apos;comtree&apos;"></p>
+<p>One way data flow merupakan salah satu cara mengatur alur data pada angular. Selain one way data flow juga ada two way data flow yang sudah dijelaskan pada hari pertama.</p>
+<p>Dengan menggunakan konsep one way data flow perubahan data dari satu Presentational Component baru akan di simpan secara permanent melalui service setelah Presentational Component mengirimkan event emitter ke Container Component, dimana pada Container Component baru data tersebut di persistence kan melalui service.</p>
+<h2 id="latihan-one-way-data-flow">Latihan One Way Data Flow</h2>
+<p>Buatlah One Way Dataflow yang sesuai untuk Container Component dan Presentational Component yang sudah di jabarkan di atas.</p>
+<p>ContainerComponent</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align:center">Input</th>
+<th style="text-align:right">Output / Event Emitter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TodoComponent</td>
+<td style="text-align:center">-</td>
+<td style="text-align:right">-</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Service untuk mengambil data todo</li>
+<li>Service untuk delete todo</li>
+<li>Service untuk edit todo</li>
+<li>Service untuk add todo</li>
+<li>Service untuk toggle todo</li>
+</ul>
+<p>Presentational Component</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align:center">Input</th>
+<th style="text-align:right">Output / Event Emitter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TodoCountComponent</td>
+<td style="text-align:center">Todos[ ]</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td>TodoItemComponent</td>
+<td style="text-align:center">Todo</td>
+<td style="text-align:right">ToggleFinished</td>
+</tr>
+<tr>
+<td>AddTodoComponent</td>
+<td style="text-align:center">-</td>
+<td style="text-align:right">AddTodo</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -521,12 +593,12 @@ platformBrowserDynamic()
 
             
                 
-                <a href="modules.html" class="navigation navigation-prev " aria-label="Previous page: Modules dalam Angular">
+                <a href="latihan.html" class="navigation navigation-prev " aria-label="Previous page: Latihan">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="interpolasi.html" class="navigation navigation-next " aria-label="Next page: Interpolasi">
+                <a href="create-modules.html" class="navigation navigation-next " aria-label="Next page: modules">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -537,7 +609,7 @@ platformBrowserDynamic()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Alur Starting Angular","level":"1.7","depth":1,"next":{"title":"Interpolasi","level":"1.8","depth":1,"path":"interpolasi.md","ref":"interpolasi.md","articles":[]},"previous":{"title":"Modules dalam Angular","level":"1.6","depth":1,"path":"modules.md","ref":"modules.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alur.md","mtime":"2019-01-30T13:29:01.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-16T00:48:59.347Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Component - Container","level":"1.17","depth":1,"next":{"title":"modules","level":"1.18","depth":1,"path":"create-modules.md","ref":"create-modules.md","articles":[]},"previous":{"title":"Latihan","level":"1.16","depth":1,"path":"latihan.md","ref":"latihan.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component-container.md","mtime":"2019-02-14T14:17:38.969Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-16T00:48:59.347Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

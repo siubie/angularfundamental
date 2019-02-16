@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Alur Starting Angular · GitBook</title>
+        <title>modules · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="interpolasi.html" />
+    <link rel="next" href="create-container.html" />
     
     
-    <link rel="prev" href="modules.html" />
+    <link rel="prev" href="component-container.html" />
     
 
     </head>
@@ -167,7 +167,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="alur.html">
+        <li class="chapter " data-level="1.7" data-path="alur.html">
             
                 <a href="alur.html">
             
@@ -310,7 +310,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18" data-path="create-modules.html">
+        <li class="chapter active" data-level="1.18" data-path="create-modules.html">
             
                 <a href="create-modules.html">
             
@@ -457,7 +457,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Alur Starting Angular</a>
+        <a href="." >modules</a>
     </h1>
 </div>
 
@@ -472,28 +472,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="alur-starting-aplikasi-angular">Alur Starting Aplikasi Angular</h1>
-<p>Aplikasi angular dimulai dari file main.ts, pada file inilah dilakukan bootstraping angular. Untuk mempermudah pemahaman terhadap alur ini bukalah file main.ts pada project anda.</p>
-<p><img src="diagrams/maints.png" alt="maints"></p>
-<p>Pada kode program di atas dapat dilihat pada file main.ts hanya terdapat statement import dan fungsi untuk memulai bootstrapping.</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { enableProdMode } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
-<span class="hljs-keyword">import</span> { platformBrowserDynamic } from <span class="hljs-string">&quot;@angular/platform-browser-dynamic&quot;</span>;
-
-<span class="hljs-keyword">import</span> { AppModule } from <span class="hljs-string">&quot;./app/app.module&quot;</span>;
-<span class="hljs-keyword">import</span> { environment } from <span class="hljs-string">&quot;./environments/environment&quot;</span>;
-</code></pre>
-<p>Pada statement import diatas dimulai dengan mengimport enableProdMode, enableProdMode ini adalah library untuk mengaktifkan production mode artinya aplikasi angular yang anda jalankan sudah pada tahap production dimana pada tahap ini proses checking yang biasanya digunakan pada development mode sudah dimatikan.</p>
-<p>Selanjutnya yang di import adalah platformBrowserDynamic, library ini digunakan untuk melakukan kompilasi kode program angular di browser. Perhatikan bahwa di main.ts yang di import adalah platformBrowserDynamic bukan platformBrowser.</p>
-<p>Selanjutnya yang di import adalah module utama atau AppModule, khusus pada file ini hanya di load root module nya saja jadi pada file ini tidak boleh ada module lain. Jika anda membagi aplikasi angular ke beberapa module maka module lain ini harus menjadi anak /child dari root module ( AppModule)</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">if</span> (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(err =&gt; <span class="hljs-built_in">console</span>.error(err));
-</code></pre>
-<p>Selanjutnya dilakukan checking environment dan yang paling utama adalah dipanggil method platformBrowserDynamic yang melakukan bootstrap module AppModule. Dari AppModule bootstraping dilanjutkan ke AppComponent</p>
+                                <h1 id="feature-modules">Feature Modules</h1>
+<p>Feature modules adalah sebuah module yang berisi component component yang dibutuhkan untuk menyelesaikan suatu tugas atau suatu fitur. Pada percobaaan kali ini setelah anda berhasil memetakan mana yang menjadi Container Component dan mana yang menjadi Presentational Component akan dilanjutkan dengan membuat sebuah feature modules untuk TodoComponent, AddTodoComponent, TodoCountComponent, dan TodoItemComponent dalam sebuah Module TodoDashboard.</p>
+<blockquote>
+<p>A feature module is an organizational best practice, as opposed to a concept of the core Angular API. A feature module delivers a cohesive set of functionality focused on a specific application need such as a user workflow, routing, or forms. While you can do everything within the root module, feature modules help you partition the app into focused areas. A feature module collaborates with the root module and with other modules through the services it provides and the components, directives, and pipes that it shares.</p>
+</blockquote>
+<h2 id="langkah-percobaan">Langkah Percobaan</h2>
+<p>Clone lah repositori berikut ini dari github <code>https://github.com/siubie/DayOneSeed.git</code> kemudian bukalah menggunakan visual studio code dan switch dari branch <code>master</code> ke branch <code>step1</code> setelah berhasil mengganti branch jalankan server angular dengan perintah <code>ng serve</code> pastikan aplikasi todo yang ada sekarang berjalan dengan baik.</p>
+<p><img src="diagrams/gitcheckout.png" alt="&apos;git&apos;">
+<img src="diagrams/ngservework.png" alt="&apos;git&apos;"></p>
 
                                 
                                 </section>
@@ -521,12 +508,12 @@ platformBrowserDynamic()
 
             
                 
-                <a href="modules.html" class="navigation navigation-prev " aria-label="Previous page: Modules dalam Angular">
+                <a href="component-container.html" class="navigation navigation-prev " aria-label="Previous page: Component - Container">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="interpolasi.html" class="navigation navigation-next " aria-label="Next page: Interpolasi">
+                <a href="create-container.html" class="navigation navigation-next " aria-label="Next page: membuat container">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -537,7 +524,7 @@ platformBrowserDynamic()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Alur Starting Angular","level":"1.7","depth":1,"next":{"title":"Interpolasi","level":"1.8","depth":1,"path":"interpolasi.md","ref":"interpolasi.md","articles":[]},"previous":{"title":"Modules dalam Angular","level":"1.6","depth":1,"path":"modules.md","ref":"modules.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alur.md","mtime":"2019-01-30T13:29:01.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-16T00:48:59.347Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"modules","level":"1.18","depth":1,"next":{"title":"membuat container","level":"1.19","depth":1,"path":"create-container.md","ref":"create-container.md","articles":[]},"previous":{"title":"Component - Container","level":"1.17","depth":1,"path":"component-container.md","ref":"component-container.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"create-modules.md","mtime":"2019-02-14T14:53:03.230Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-16T00:48:59.347Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
