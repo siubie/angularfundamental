@@ -33,16 +33,73 @@ Langkah pertama siapkan sebuah struktur folder untuk menyimpan file file yang di
 
 !['struktur'](diagrams/strukturfoldermodule.png)
 
-Seperti pada gambar dan folder tree di atas buatlah sebuah tiga buah folder yaitu :
+Seperti pada gambar dan folder tree di atas buatlah sebuah tiga buah di dalam folder todo-dasboard yaitu :
 
 - component
 - containers
 - models
 
-di dalam folder todo-dashboard, setelah itu di dalam folder component siapkan folder lain untuk menyimpan file file yang digunakan untuk presentational component :
+setelah itu di dalam folder component siapkan folder lain untuk menyimpan file file yang digunakan untuk presentational component :
 
 - add-todo
 - todo-count
 - todo-item
 
 Di dalam folder containers siapkan file untuk container component `TodoDashboardComponen`. Setelah semua folder dibuat lengkapi folder tersebut dengan file file yang ada di file tree, biarkan file tersebut kosong tapi dengan ekstensi file yang sesuai.
+
+Kemudian lanjutkan dengan mengedit file `todo.dashboard.html`
+
+```html
+<div class="row">
+  <div class="col-md-12 order-md-2 mb-4">
+    <add-todo></add-todo>
+    <todo-count></todo-count>
+    <todo-item></todo-item>
+  </div>
+</div>
+```
+
+Kode html diatas digunakan pada todo.dashboard.html sebagai template container component dimana TodoDashboardComponent menjadi parent dari `add-todo, todo-count dan todo-item`
+
+Kemudian untuk file `todo.dashboard.component.ts` kita tambahkan boilerplate code untuk pembuatan component dibawah ini.
+
+```typescript
+import { Component } from "@angular/core";
+@Component({
+  selector: "todo-dashboard",
+  styleUrls: ["todo.dashboard.css"],
+  templateUrl: "todo.dashboard.html"
+})
+export class TodoDashboardComponent {}
+```
+
+Untuk file `todo.dashboard.css` tambahkan kode program seperti dibawah ini :
+
+```css
+.todo-input {
+  margin-bottom: 10px;
+}
+```
+
+Setelah semua file pada folder containers selesai di isi lanjutkan dengan melakukan registrasi component tersebut ke module dalam hal ini ke file todo.dashboard.module.ts. Untuk menambahkannya lakukan import todo.dashboard.component di todo.dashboard.modules dengan menggunakan kode program dibawah ini:
+
+```typescript
+import { TodoDashboardComponent } from "./containers/todo.dashboard.component";
+```
+
+Setelah import dilakukan maka TodoDashboardComponent dapat digunakan sebagai declaration di decorator@NgModule. Berikut ini kode program todo .dashboard.modules.ts setelah proses ini dilakukan
+
+```typescript
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { TodoDashboardComponent } from "./containers/todo.dashboard.component";
+
+@NgModule({
+  declarations: [TodoDashboardComponent],
+  imports: [CommonModule],
+  exports: [TodoDashboardComponent]
+})
+export class TodoDashboardModule {}
+```
+
+Selain menjadikan TodoDashboardComponent sebagai declaration, module ini juga melakukan export TodoDashboardComponent, ini artinya TodoDashboardComponent dapat digunakan oleh moudle lain yang melakukan import module ini.

@@ -19,9 +19,9 @@
 17. [Component - Container](component-container.md)
 18. [Create Feature Modules](create-modules.md)
 19. [Membuat Container Component - Todo Dashboard Component](todo-dashboard-component.md)
-20. [Presentational Component - Add Todo Component](presentational.md)
-21. [Presentational Component - Todo Count Component](presentational.md)
-22. [Presentational Component - Todo Item Component](presentational.md)
+20. [Presentational Component - Add Todo Component](add-todo-component.md)
+21. [Presentational Component - Todo Count Component](todo-count-component.md)
+22. [Presentational Component - Todo Item Component](todo-item-component.md)
 23. [immutable state]
 24. [ngOnChange]
 25. [Service dan Observable]
