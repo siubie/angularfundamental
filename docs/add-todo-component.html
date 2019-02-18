@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Property Binding · GitBook</title>
+        <title>Presentational Component - Add Todo Component · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="event.html" />
+    <link rel="next" href="todo-count-component.md" />
     
     
-    <link rel="prev" href="interpolasi.html" />
+    <link rel="prev" href="todo-dashboard-component.html" />
     
 
     </head>
@@ -193,7 +193,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9" data-path="property.html">
+        <li class="chapter " data-level="1.9" data-path="property.html">
             
                 <a href="property.html">
             
@@ -336,7 +336,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.20" data-path="add-todo-component.html">
+        <li class="chapter active" data-level="1.20" data-path="add-todo-component.html">
             
                 <a href="add-todo-component.html">
             
@@ -444,7 +444,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Property Binding</a>
+        <a href="." >Presentational Component - Add Todo Component</a>
     </h1>
 </div>
 
@@ -459,43 +459,73 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="property-binding">Property Binding</h1>
-<p>Property binding adalah cara angular untuk menghubungkan antara tag attribute pada template html dan variabel class component. Untuk mempermudah pemahaman terhadap property binding ada beberapa konsep yang harus dipahami yaitu :</p>
-<ol>
-<li>Semua tag html memiliki attribut.</li>
-<li>Semua attribut pada tag html tersebut dapat di akses melalui Document Object Model (Dom).</li>
-<li>Semua Dom memiliki properties yang sesuai dengan attribut pada tag html tersebut.</li>
-</ol>
-<blockquote>
-<p>Untuk yang sudah berpengalaman dengan akses DOM menggunakan jquery atau javascript mungkin dapat lebih mudah memahami konsep ini</p>
-</blockquote>
-<p>Contoh :</p>
-<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- kode program html biasa: --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;hello world&quot;</span> /&gt;</span>
-<span class="hljs-comment">&lt;!-- kode program property binding pada atribut html: --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;namaVariabelDiComponent&quot;</span> /&gt;</span>
-<span class="hljs-comment">&lt;!-- kode program property binding pada interpolasi pada html: --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;{{namaVariabelDiComponent}}&quot;</span> /&gt;</span>
+                                <h1 id="add-todo-component">Add Todo Component</h1>
+<p>Selanjutnya kita akan menyelesaikan langkah selanjutnya yaitu membuat presentational component AddTodoComponent. Presentational component ini mempunyai tugas menerima input dari user untuk disimpan sebagai Item Todo. Untuk menyelesaikan component ini lakukanlah langkah percobaan dibawah ini.</p>
+<p>Sesuai dengan desain pada chapter sebelumnya berdasarkan tabel dibawah ini</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align:center">Input</th>
+<th style="text-align:right">Output / Event Emitter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TodoCountComponent</td>
+<td style="text-align:center">Todos[ ]</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td>TodoItemComponent</td>
+<td style="text-align:center">Todo</td>
+<td style="text-align:right">ToggleFinished</td>
+</tr>
+<tr>
+<td>AddTodoComponent</td>
+<td style="text-align:center">-</td>
+<td style="text-align:right">AddTodo</td>
+</tr>
+</tbody>
+</table>
+<p>AddTodoComponent memiliki output / event emitter yang bertujuan untuk menambahkan Todo. Selanjutnya mari kita isi file component yang sebelumnya sudah di buat pada file <code>add.todo.component.ts</code>. Bukalah file tersebut kemudian tambahkan import yang menjadi syarat untuk membuat sebuah file menjadi component.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component} from <span class="hljs-string">&apos;@angular/core&apos;</span>;
 </code></pre>
-<p>Dengan potongan kode program di atas kita melakukan property binding ke attribut value dari input text. Dengan cara ini kita dapat menghubungkan nilai variabel dengan nama &quot;namaVariabelDiComponent&quot; ke isi dari input text.</p>
-<p>Selain dengan menggunakan <code>[]</code> (square bracket) property binding juga bisa dilakukan dengan menggunakan interpolasi seperti pada kode program di atas, namun cara yang umum dan sering digunakan adalah cara pada kode program baris ke dua.</p>
-<p>Property binding dengan cara ini merupakan model &quot;one way data binding&quot; dimana data mengalir satu arah dari component ke template, artinya data hanya akan berubah jika component mengubah nilai dari data tersebut template html hanya menjadi presenter atau alat untuk menampilkan data.</p>
-<h2 id="langkah-percobaan">Langkah Percobaan</h2>
-<p>Dari percobaan sebelumnya hapuslah isi dari file app.component.html, kemudian berilah sebuah header dengan judul &quot;Property Binding&quot;</p>
-<p><img src="diagrams/propertybinding1.png" alt="propertybinding"></p>
-<p>Selanjutnya lakukan lah binding terhadap sebuah tag html h2 yang berisi nilai dari variabel title pada component dengan cara property binding dan interpolasi.</p>
-<p><img src="diagrams/propertybinding2.png" alt="propertybinding"></p>
-<p>Hasil dari kode program diatas</p>
-<p><img src="diagrams/propertybinding3.png" alt="propertybinding"></p>
-<p>Dari hasil percobaan diatas terlihat binding dengan cara property binding dan interpolasi memberikan hasil yang sama.</p>
-<p>Selanjutnya buatlah sebuah tombol dengan binding attribut disabled nya ke variabel <code>isTeaBreakTime</code> seperti pada kode program dibawah ini.</p>
-<p><img src="diagrams/propertybinding4.png" alt="propertybinding"></p>
-<p>Jalankan server angular anda dan lihat hasilnya pada web browser.</p>
-<p><img src="diagrams/propertybinding5.png" alt="propertybinding"></p>
-<p>Perhatikan bahwa hasil binding menggunakan interpolasi pada button selalu membuat button di disable.</p>
-<blockquote>
-<p>Interpolasi dapat digunakan sebagai property binding karena interpolasi merupakan syntactic sugar untuk mempersingkat penulisan binding, namun tidak dapat digunakan untuk nilai boolean jadi sebaiknya jika tipe data yang di binding bukan string di binding menggunakan property binding saja.</p>
-</blockquote>
+<p>Component di import agar kita dapat menggunakan decorator @component. Kemudian kita dapat menggunakan decorator @Component.</p>
+<pre><code class="lang-typescript">@Component({
+  selector: <span class="hljs-string">&apos;add-todo&apos;</span>,
+  styleUrls: [],
+  templateUrl: <span class="hljs-string">&apos;add.todo.html&apos;</span>
+})
+</code></pre>
+<p>Pada kode program diatas kita menggunakan decorator @Component kemudian menggunakan selector, styleUrls dan templateUrl seperti pada kode program di atas. Dengan decorator diatas kita dapat menggunakan tag <code>&lt;add-todo&gt;&lt;/add-todo&gt;</code> di template html, untuk component ini tidak digunakan style dan template nya di pisah di file <code>add.todo.html</code>.</p>
+<p>Selanjutnya setelah decorator buatlah class typescript dengan nama <code>AddTodoComponent</code> </p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AddTodoComponent {
+  <span class="hljs-keyword">constructor</span>() {}
+}
+</code></pre>
+<p>Di kode program di atas kita membuat sebuah class typescript dengan nama <code>AddTodoComponent</code>, penting untuk diperhatikan ada statement export sebelum class ini diperlukan agar class ini dapat di import di file lain, jika tidak ada statement ini class ini tidak dapat di import dari file lain.</p>
+<p>Selanjutnya lengkapilah file <code>add.todo.html</code>, di file ini kita isikan tampilan dari component add todo yang kita buat sebelumnya. </p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card p-2 todo-input&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>
+      <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Add Your Todo List Here&quot;</span>
+      #<span class="hljs-attr">task</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-append&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-secondary&quot;</span>
+      &gt;</span>
+        Add Todo
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>Dengan menambahkan tampilan ini</p>
 
                                 
                                 </section>
@@ -523,12 +553,12 @@
 
             
                 
-                <a href="interpolasi.html" class="navigation navigation-prev " aria-label="Previous page: Interpolasi">
+                <a href="todo-dashboard-component.html" class="navigation navigation-prev " aria-label="Previous page: Membuat Container Component - Todo Dashboard Component">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="event.html" class="navigation navigation-next " aria-label="Next page: Event Binding">
+                <a href="todo-count-component.md" class="navigation navigation-next " aria-label="Next page: Presentational Component - Todo Count Component">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -539,7 +569,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Property Binding","level":"1.9","depth":1,"next":{"title":"Event Binding","level":"1.10","depth":1,"path":"event.md","ref":"event.md","articles":[]},"previous":{"title":"Interpolasi","level":"1.8","depth":1,"path":"interpolasi.md","ref":"interpolasi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"property.md","mtime":"2019-01-31T00:38:03.207Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T15:24:05.548Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Presentational Component - Add Todo Component","level":"1.20","depth":1,"next":{"title":"Presentational Component - Todo Count Component","level":"1.21","depth":1,"path":"todo-count-component.md","ref":"todo-count-component.md","articles":[]},"previous":{"title":"Membuat Container Component - Todo Dashboard Component","level":"1.19","depth":1,"path":"todo-dashboard-component.md","ref":"todo-dashboard-component.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"add-todo-component.md","mtime":"2019-02-18T11:21:38.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T15:24:05.548Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
