@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>modules · GitBook</title>
+        <title>Create Feature Modules · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="create-container.html" />
+    <link rel="next" href="todo-dashboard-component.html" />
     
     
     <link rel="prev" href="component-container.html" />
@@ -315,7 +315,7 @@
                 <a href="create-modules.html">
             
                     
-                    modules
+                    Create Feature Modules
             
                 </a>
             
@@ -323,12 +323,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.19" data-path="create-container.html">
+        <li class="chapter " data-level="1.19" data-path="todo-dashboard-component.html">
             
-                <a href="create-container.html">
+                <a href="todo-dashboard-component.html">
             
                     
-                    membuat container
+                    Membuat Container Component - Todo Dashboard Component
             
                 </a>
             
@@ -341,7 +341,7 @@
                 <span>
             
                     
-                    Presentational Component
+                    Presentational Component - Add Todo Component
             
                 </a>
             
@@ -349,46 +349,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" >
+        <li class="chapter " data-level="1.21" data-path="presentational.md">
             
                 <span>
             
                     
-                    [component parameter]
+                    Presentational Component - Todo Count Component
             
-                </span>
+                </a>
             
 
             
         </li>
     
-        <li class="chapter " data-level="1.22" >
+        <li class="chapter " data-level="1.22" data-path="presentational.md">
             
                 <span>
             
                     
-                    [dynamic input]
+                    Presentational Component - Todo Item Component
             
-                </span>
+                </a>
             
 
             
         </li>
     
         <li class="chapter " data-level="1.23" >
-            
-                <span>
-            
-                    
-                    [emitting change]
-            
-                </span>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.24" >
             
                 <span>
             
@@ -401,7 +388,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25" >
+        <li class="chapter " data-level="1.24" >
             
                 <span>
             
@@ -414,7 +401,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.26" >
+        <li class="chapter " data-level="1.25" >
             
                 <span>
             
@@ -457,7 +444,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >modules</a>
+        <a href="." >Create Feature Modules</a>
     </h1>
 </div>
 
@@ -481,6 +468,38 @@
 <p>Clone lah repositori berikut ini dari github <code>https://github.com/siubie/DayOneSeed.git</code> kemudian bukalah menggunakan visual studio code dan switch dari branch <code>master</code> ke branch <code>step1</code> setelah berhasil mengganti branch jalankan server angular dengan perintah <code>ng serve</code> pastikan aplikasi todo yang ada sekarang berjalan dengan baik.</p>
 <p><img src="diagrams/gitcheckout.png" alt="&apos;git&apos;">
 <img src="diagrams/ngservework.png" alt="&apos;git&apos;"></p>
+<p>Branch Step 1 adalah branch yang berisi finished code dari latihan sebelumnya. Pada branch ini sudah berhasil dibuat sebuah aplikasi todo list sederhana dengan fitur add dan toggle finished. Namun pada branch ini masih belum menggunakan konsep pengembangan yang berbasis component dengan baik karena semua kode program di buat di file app.component.ts dan app.component.html.</p>
+<p>Pada percobaan ini kita akan membuat sebuah feature module yang bertugas menangani fitur Todo yang ada pada branch Step 1, pada module ini akan di isi dengan container component dan presentational component yang telah di analisa pada modul sebelumnya.</p>
+<p>Untuk melaksanakan percobaan ini pastikan bahwa branch yang anda gunakan sekaraang adalah branch <code>step1</code>, cara melakukan pengecekan dengan menjalankan perintah berikut ini pada terminal di folder project anda. (pastikan git sudah terinstall pada sistem operasi anda).</p>
+<pre><code>git branch
+</code></pre><p><img src="diagrams/gitbranch.png" alt="&apos;image&apos;"></p>
+<p>Hasil perintah git branch dapat anda lihat pada gambar dibawah ini :</p>
+<p><img src="diagrams/gitbranchlist.png" alt="&apos;image&apos;"></p>
+<p>Current branch dapat anda lihat dengan mengecek tanda asterisk <code>*</code> pada hasil terminal jika berdasarkan gambar diatas branch masih berada pada branch master, untuk itu anda perlu melakukan perubahan untuk pindah ke branch step1 dengan perintah berikut ini.</p>
+<p><img src="diagrams/gitbranchcheckout.png" alt="&apos;image&apos;"></p>
+<p>Setelah berhasil pindah ke branch step1 mari kita lanjutkan dengan membuat sebuah feature module yang bernama <code>todo-dashboard</code>, untuk membuatnya mulailah dengan menambahkan folder baru bernama <code>todo-dashboard</code> pada folder <code>app</code> setelah itu tambahkan dua folder lagi yaitu folder <code>containers</code>, <code>component</code> dan <code>models</code> berikut ini folder tree yang harus dibuat :</p>
+<p><img src="diagrams/strukturfolder.png" alt="&apos;image&apos;"></p>
+<p>Mari dilanjutkan dengan menambahkan sebuah file baru bernama <code>todo.dashboard.module.ts</code>, Langkah pembuatan module ini sama degnan langkah pada modul sebelumnya, untuk lebih memahami prosesnya mari kita ulang kembali prosesnya.</p>
+<p>Setiap module pada file module angular membutuhkan library dari <code>@angular/core</code> yaitu library <code>ngModule</code> yang merupakan decorator yang membedakan antara module dengan component dan file lain. Untuk itu pada file <code>todo.dashboard.module.ts</code> tambahkanlah statement import berikut ini.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+</code></pre>
+<p>Selain itu include can juga library <code>CommonModule</code> dari <code>@angular/common</code></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { CommonModule } from <span class="hljs-string">&quot;@angular/common&quot;</span>;
+</code></pre>
+<p>Setelah menambahkan ngModule dan CommonModule kita dapat menggunakan decorator @ngModule dan mengimport CommonModule ke Class TodoDashboardModule.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { CommonModule } from <span class="hljs-string">&quot;@angular/common&quot;</span>;
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule],
+  exports: []
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoDashboardModule {}
+</code></pre>
+<p>Berikut ini hasil kode program <code>todo.dashboard.module</code></p>
+<p><img src="diagrams/featuremodule.png" alt="&apos;image&apos;"></p>
+<p>Yang barusaja anda buat adalah sebuah template module pada angular dengan library minimal dimana pada module ini nanti akan ditambahkan beberapa component dan container yang digunakan pada module ini.</p>
 
                                 
                                 </section>
@@ -513,7 +532,7 @@
                 </a>
                 
                 
-                <a href="create-container.html" class="navigation navigation-next " aria-label="Next page: membuat container">
+                <a href="todo-dashboard-component.html" class="navigation navigation-next " aria-label="Next page: Membuat Container Component - Todo Dashboard Component">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -524,7 +543,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"modules","level":"1.18","depth":1,"next":{"title":"membuat container","level":"1.19","depth":1,"path":"create-container.md","ref":"create-container.md","articles":[]},"previous":{"title":"Component - Container","level":"1.17","depth":1,"path":"component-container.md","ref":"component-container.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"create-modules.md","mtime":"2019-02-14T14:53:03.230Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-16T00:48:59.347Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Create Feature Modules","level":"1.18","depth":1,"next":{"title":"Membuat Container Component - Todo Dashboard Component","level":"1.19","depth":1,"path":"todo-dashboard-component.md","ref":"todo-dashboard-component.md","articles":[]},"previous":{"title":"Component - Container","level":"1.17","depth":1,"path":"component-container.md","ref":"component-container.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"create-modules.md","mtime":"2019-02-16T01:29:04.694Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-16T01:58:13.903Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -10,3 +10,61 @@ Clone lah repositori berikut ini dari github `https://github.com/siubie/DayOneSe
 
 !['git'](diagrams/gitcheckout.png)
 !['git'](diagrams/ngservework.png)
+
+Branch Step 1 adalah branch yang berisi finished code dari latihan sebelumnya. Pada branch ini sudah berhasil dibuat sebuah aplikasi todo list sederhana dengan fitur add dan toggle finished. Namun pada branch ini masih belum menggunakan konsep pengembangan yang berbasis component dengan baik karena semua kode program di buat di file app.component.ts dan app.component.html.
+
+Pada percobaan ini kita akan membuat sebuah feature module yang bertugas menangani fitur Todo yang ada pada branch Step 1, pada module ini akan di isi dengan container component dan presentational component yang telah di analisa pada modul sebelumnya.
+
+Untuk melaksanakan percobaan ini pastikan bahwa branch yang anda gunakan sekaraang adalah branch `step1`, cara melakukan pengecekan dengan menjalankan perintah berikut ini pada terminal di folder project anda. (pastikan git sudah terinstall pada sistem operasi anda).
+
+```
+git branch
+```
+
+!['image'](diagrams/gitbranch.png)
+
+Hasil perintah git branch dapat anda lihat pada gambar dibawah ini :
+
+!['image'](diagrams/gitbranchlist.png)
+
+Current branch dapat anda lihat dengan mengecek tanda asterisk `*` pada hasil terminal jika berdasarkan gambar diatas branch masih berada pada branch master, untuk itu anda perlu melakukan perubahan untuk pindah ke branch step1 dengan perintah berikut ini.
+
+!['image'](diagrams/gitbranchcheckout.png)
+
+Setelah berhasil pindah ke branch step1 mari kita lanjutkan dengan membuat sebuah feature module yang bernama `todo-dashboard`, untuk membuatnya mulailah dengan menambahkan folder baru bernama `todo-dashboard` pada folder `app` setelah itu tambahkan dua folder lagi yaitu folder `containers`, `component` dan `models` berikut ini folder tree yang harus dibuat :
+
+!['image'](diagrams/strukturfolder.png)
+
+Mari dilanjutkan dengan menambahkan sebuah file baru bernama `todo.dashboard.module.ts`, Langkah pembuatan module ini sama degnan langkah pada modul sebelumnya, untuk lebih memahami prosesnya mari kita ulang kembali prosesnya.
+
+Setiap module pada file module angular membutuhkan library dari `@angular/core` yaitu library `ngModule` yang merupakan decorator yang membedakan antara module dengan component dan file lain. Untuk itu pada file `todo.dashboard.module.ts` tambahkanlah statement import berikut ini.
+
+```typescript
+import { NgModule } from "@angular/core";
+```
+
+Selain itu include can juga library `CommonModule` dari `@angular/common`
+
+```typescript
+import { CommonModule } from "@angular/common";
+```
+
+Setelah menambahkan ngModule dan CommonModule kita dapat menggunakan decorator @ngModule dan mengimport CommonModule ke Class TodoDashboardModule.
+
+```typescript
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule],
+  exports: []
+})
+export class TodoDashboardModule {}
+```
+
+Berikut ini hasil kode program `todo.dashboard.module`
+
+!['image'](diagrams/featuremodule.png)
+
+Yang barusaja anda buat adalah sebuah template module pada angular dengan library minimal dimana pada module ini nanti akan ditambahkan beberapa component dan container yang digunakan pada module ini.

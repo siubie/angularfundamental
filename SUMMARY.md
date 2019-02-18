@@ -17,12 +17,11 @@
 15. [Pipes](pipes.md)
 16. [Latihan](latihan.md)
 17. [Component - Container](component-container.md)
-18. [modules](create-modules.md)
-19. [membuat container](create-container.md)
-20. [Presentational Component](presentational.md)
-21. [component parameter]
-22. [dynamic input]
-23. [emitting change]
-24. [immutable state]
-25. [ngOnChange]
-26. [Service dan Observable]
+18. [Create Feature Modules](create-modules.md)
+19. [Membuat Container Component - Todo Dashboard Component](todo-dashboard-component.md)
+20. [Presentational Component - Add Todo Component](presentational.md)
+21. [Presentational Component - Todo Count Component](presentational.md)
+22. [Presentational Component - Todo Item Component](presentational.md)
+23. [immutable state]
+24. [ngOnChange]
+25. [Service dan Observable]
