@@ -31,9 +31,34 @@ Current branch dapat anda lihat dengan mengecek tanda asterisk `*` pada hasil te
 
 !['image'](diagrams/gitbranchcheckout.png)
 
-Setelah berhasil pindah ke branch step1 mari kita lanjutkan dengan membuat sebuah feature module yang bernama `todo-dashboard`, untuk membuatnya mulailah dengan menambahkan folder baru bernama `todo-dashboard` pada folder `app` setelah itu tambahkan dua folder lagi yaitu folder `containers`, `component` dan `models` berikut ini folder tree yang harus dibuat :
+### Buat Folder Container, Component dan Models
+
+Setelah berhasil pindah ke branch step1 mari kita lanjutkan dengan membuat sebuah feature module yang bernama `todo-dashboard`, untuk membuatnya mulailah dengan menambahkan folder baru bernama `todo-dashboard` pada folder `app` setelah itu tambahkan tiga folder lagi yaitu folder `containers`, `component` dan `models` berikut ini folder tree yang harus dibuat :
 
 !['image'](diagrams/strukturfolder.png)
+
+```typescript
+├── todo-dashboard
+│   ├── component
+│   ├── container
+│   └── models
+```
+
+### Pindahkan File todo.model.ts
+
+Setelah berhasil membuat folder lanjutkan dengan memindahkan file `todo.model.ts` dari folder `app` ke folder `app/todo-dashboard/model`, ini dilakukan agar semua file yang berhubungan dengan fitur todo berada dalam satu folder.
+
+!['pindahmodel'](diagrams/pindahmodelts.png)
+
+```typescript
+.
+├── component
+├── container
+└── models
+    └── todo.model.ts
+```
+
+### Buat Feature Module
 
 Mari dilanjutkan dengan menambahkan sebuah file baru bernama `todo.dashboard.module.ts`, Langkah pembuatan module ini sama degnan langkah pada modul sebelumnya, untuk lebih memahami prosesnya mari kita ulang kembali prosesnya.
 
@@ -68,3 +93,26 @@ Berikut ini hasil kode program `todo.dashboard.module`
 !['image'](diagrams/featuremodule.png)
 
 Yang barusaja anda buat adalah sebuah template module pada angular dengan library minimal dimana pada module ini nanti akan ditambahkan beberapa component dan container yang digunakan pada module ini.
+
+Selanjutnya agar `TodoDashboardModule` yang kita buat dapat digunakan di root module (`AppModule`), `TodoDashboardModule` harus di import sebagai sebuah module baru di file `app.module.ts`. Ubahlah kode program pada file `app.module.ts` menjadi seperti pada gambar dibawah ini.
+
+```typescript
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { TodoDashboardModule } from "./todo-dashboard/todo.dashboard.module";
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, TodoDashboardModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+!['todomoduletoappmodule'](diagrams/todomoduletoappmodule.png)
+
+Setelah melakukan import `TodoDashboardModule` compiler angular akan memberikan error bahwa `TodoDashboardModule` tidak memiliki "exported member", hal ini wajar karena kita akan menambahkan membuat container component dan meng export nya di langkah selanjutnya.

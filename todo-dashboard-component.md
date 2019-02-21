@@ -47,20 +47,6 @@ setelah itu di dalam folder component siapkan folder lain untuk menyimpan file f
 
 Di dalam folder containers siapkan file untuk container component `TodoDashboardComponen`. Setelah semua folder dibuat lengkapi folder tersebut dengan file file yang ada di file tree, biarkan file tersebut kosong tapi dengan ekstensi file yang sesuai.
 
-Kemudian lanjutkan dengan mengedit file `todo.dashboard.html`
-
-```html
-<div class="row">
-  <div class="col-md-12 order-md-2 mb-4">
-    <add-todo></add-todo>
-    <todo-count></todo-count>
-    <todo-item></todo-item>
-  </div>
-</div>
-```
-
-Kode html diatas digunakan pada todo.dashboard.html sebagai template container component dimana TodoDashboardComponent menjadi parent dari `add-todo, todo-count dan todo-item`
-
 Kemudian untuk file `todo.dashboard.component.ts` kita tambahkan boilerplate code untuk pembuatan component dibawah ini.
 
 ```typescript
@@ -72,6 +58,20 @@ import { Component } from "@angular/core";
 })
 export class TodoDashboardComponent {}
 ```
+
+Kemudian lanjutkan dengan mengedit file `todo.dashboard.html`
+
+```html
+<div class="row">
+  <div class="col-md-12 order-md-2 mb-4">
+    <!-- <add-todo></add-todo>
+    <todo-count></todo-count>
+    <todo-item></todo-item> -->
+  </div>
+</div>
+```
+
+Kode html diatas digunakan pada todo.dashboard.html sebagai template container component dimana TodoDashboardComponent menjadi parent dari `add-todo, todo-count dan todo-item`. Perhatikan bahwa child component masih di pasang sebagai komentar agar tidak di eksekusi untuk menghindari error.
 
 Untuk file `todo.dashboard.css` tambahkan kode program seperti dibawah ini :
 
@@ -102,4 +102,16 @@ import { TodoDashboardComponent } from "./containers/todo.dashboard.component";
 export class TodoDashboardModule {}
 ```
 
-Selain menjadikan TodoDashboardComponent sebagai declaration, module ini juga melakukan export TodoDashboardComponent, ini artinya TodoDashboardComponent dapat digunakan oleh moudle lain yang melakukan import module ini.
+Selain menjadikan TodoDashboardComponent sebagai declaration, module ini juga melakukan export TodoDashboardComponent, ini artinya TodoDashboardComponent dapat digunakan oleh module lain yang melakukan import module ini.
+
+Langkah selanjutnya adalah menggunakan container component ini di app component dengan merubah file `app.component.html` menjadi seperti dibawah ini.
+
+```html
+<div class="container">
+  <todo-dashboard></todo-dashboard>
+</div>
+```
+
+!['error'](diagrams/error.png)
+
+Jika server angular dijalankan pada tahap ini dan anda mendapatkan error pada console seperti gambar di atas itu karena child component belum di pasang komentar pada file `todo.dashboard.html`

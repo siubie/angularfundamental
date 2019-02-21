@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="todo-count-component.md" />
+    <link rel="next" href="todo-count-component.html" />
     
     
     <link rel="prev" href="todo-dashboard-component.html" />
@@ -349,9 +349,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="todo-count-component.md">
+        <li class="chapter " data-level="1.21" data-path="todo-count-component.html">
             
-                <span>
+                <a href="todo-count-component.html">
             
                     
                     Presentational Component - Todo Count Component
@@ -512,7 +512,6 @@
       <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
       <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>
       <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Add Your Todo List Here&quot;</span>
-      #<span class="hljs-attr">task</span>
     /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-append&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
@@ -525,7 +524,180 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 </code></pre>
-<p>Dengan menambahkan tampilan ini</p>
+<p>Setelah menambahkan file html ini selanjutnya kita harus melakukan registrasi component <code>add.todo.component.ts</code> ke module <code>TodoDashboard</code>, untuk melakukannya dapat dilakukan dengan mengimport <code>add.todo.component</code> kemudian menjadikannya sebagai declarations pada module <code>TodoDashboard</code>. Tambahkan kode program dibawah ini untuk mengimport <code>add.todo.component</code>. </p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { AddTodoComponent } from <span class="hljs-string">&apos;./component/add-todo/add.todo.component&apos;</span>;
+</code></pre>
+<pre><code class="lang-typescript">@NgModule({
+  declarations: [TodoDashboardComponent, AddTodoComponent],
+  imports: [CommonModule],
+  exports: [TodoDashboardComponent]
+})
+</code></pre>
+<p>Selanjutnya bukalah kembali file <code>todo.dashboard.html</code> dan hapuslah komentar untuk selector <code>add-todo</code> sehingga kode program pada file ini menjadi seperti dibawah ini.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-md-12 order-md-2 mb-4&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">add-todo</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">add-todo</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;todo-count&gt;&lt;/todo-count&gt;
+    &lt;todo-item&gt;&lt;/todo-item&gt; --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Jika semua kode program diketikkan dengan benar akan didapatkan tampilan seperti dibawah ini jika server dijalankan: </p>
+<p><img src="diagrams/addtodocomawal.png" alt="&apos;add&apos;"></p>
+<p>Sejauh ini kita sudah berhasil memindahkan tampilan untuk menambah todo ke AddTodoComponent namun ketika di klik tombol add todo aplikasi masih tidak berjalan, ingat di awal bahwa AddTodoComponent memiliki output dengan EventEmitter bernama AddTodo.</p>
+<p>Selanjutnya untuk menambahkan output dan memastikan AddTodoComponent bekerja dengan baik lakukanlah langkah langkah berikut. </p>
+<h3 id="update-tododashboard-untuk-menerima-output">Update TodoDashboard untuk menerima output</h3>
+<p>Langkah pertama yang dilakukan adalah menambahkan sebuah custom event pada file todo.dashboard.html dimana pada file ini terdapat selector <code>&lt;add-todo&gt;&lt;/add-todo&gt;</code>. Custom event ini akan digunakan sebagai output dari <code>AddTodoComponent</code>, custom event pada dasarnya sama dengan event binding biasa namun pada custom event kita dapat memberikan nama sesuai dengan kebutuhan kita. Ubahlah file <code>todo.dashboard.html</code> menjadi seperti dibawah ini.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-md-12 order-md-2 mb-4&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">add-todo</span> (<span class="hljs-attr">create</span>)=<span class="hljs-string">&quot;handleAddTodo($event)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">add-todo</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;todo-count&gt;&lt;/todo-count&gt;
+    &lt;todo-item&gt;&lt;/todo-item&gt; --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Kemudian tambahkan implementasi <code>handleAddTodo</code> pada file <code>todo.dashboard.component.ts</code></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+@Component({
+  selector: <span class="hljs-string">&apos;todo-dashboard&apos;</span>,
+  styleUrls: [<span class="hljs-string">&apos;todo.dashboard.css&apos;</span>],
+  templateUrl: <span class="hljs-string">&apos;todo.dashboard.html&apos;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoDashboardComponent {
+  handleAddTodo(task: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-built_in">console</span>.log(task);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  }
+}
+</code></pre>
+<h3 id="buat-template-ref">Buat Template Ref</h3>
+<p>Bukalah kembali file <code>add.todo.html</code> pada pada folder <code>add-todo</code>, kemudian tambahkan template reference dengan nama task, sehingga kode program pada <code>add.todo.html</code> menjadi seperti ini : </p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card p-2 todo-input&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>
+      <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Add Your Todo List Here&quot;</span>
+      #<span class="hljs-attr">task</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-append&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-secondary&quot;</span>&gt;</span>
+        Add Todo
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<h3 id="buat-event-click">Buat Event Click</h3>
+<p>Kemudaian buatlah event binding untuk click pada tombol add todo.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card p-2 todo-input&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>
+      <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Add Your Todo List Here&quot;</span>
+      #<span class="hljs-attr">task</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-append&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-secondary&quot;</span>
+        (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;onClickAddTodo(task.value)&quot;</span>
+      &gt;</span>
+        Add Todo
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>Pada kode program diatas ditambahkan event binding click pada button add todo dengan handler onClickAddTodo.</p>
+<h3 id="buat-function-handle-event-click">Buat Function Handle Event Click</h3>
+<p>Setelah membuat event binding, lanjutkan dengan membuat handler function nya.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+@Component({
+  selector: <span class="hljs-string">&apos;add-todo&apos;</span>,
+  styleUrls: [],
+  templateUrl: <span class="hljs-string">&apos;add.todo.html&apos;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AddTodoComponent {
+  <span class="hljs-keyword">constructor</span>() {}
+  onClickAddTodo(value: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-built_in">console</span>.log(value);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  }
+}
+</code></pre>
+<p>Jika server dijalankan pada tahap ini sudah bisa menerima event click dan membaca serta menampilkan input dari user ke console browser. </p>
+<blockquote>
+<p>Return false pada fungsi onClickAddtodo berfungsi untuk menghentikan proses klik sehingga tidak berpindah ke halaman baru.</p>
+</blockquote>
+<p><img src="diagrams/consoleaddtodo.png" alt="&apos;console&apos;"></p>
+<h3 id="buat-event-emmitter">Buat Event Emmitter</h3>
+<p>Setelah berhasil mendeteksi perubahan data di click event pada AddTodoComponent, kita harus mengirim perubahan ini ke parent component TodoDashboardcomponent, pengiriman data ini dilakukan dengan menggunakan event emitter.</p>
+<p>Tambahkan import Event Emitter dan Output dari @angular/core</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, EventEmitter, Output } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+</code></pre>
+<p>Setelah menambahkan import kita dapat menggunakan decorator @output dan membuat sebuah event emitter untuk mengirim data keluar dari AddTodoComponent ke TodoDashboardComponent.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, EventEmitter, Output } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+@Component({
+  selector: <span class="hljs-string">&apos;add-todo&apos;</span>,
+  styleUrls: [],
+  templateUrl: <span class="hljs-string">&apos;add.todo.html&apos;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AddTodoComponent {
+  @Output()
+  create: EventEmitter&lt;<span class="hljs-built_in">any</span>&gt; = <span class="hljs-keyword">new</span> EventEmitter();
+
+  <span class="hljs-keyword">constructor</span>() {}
+
+  onClickAddTodo(value: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">this</span>.create.emit(value);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  }
+}
+</code></pre>
+<p>Pada kode program diatas ditambahkan decorator @output untuk menandakan bahwa component ini memiliki output dengan nama create yang berupa sebuah event emitter. kemudain pada function onClickAddtodo dilakukan emit create event dengan nilai data dari input text.</p>
+<p><img src="diagrams/output.png" alt="&apos;output&apos;"></p>
+<h3 id="update-event-di-tododashboardhtml">Update Event di TodoDashboard.html</h3>
+<p>Setelah data dikirim ke todo.dashboard.component kita dapat menggunakan data tersebut untuk merubah dan menambahkan data todo. Untuk menambah data todo lakukan perubahan berikut pada todo.dashboard.component.</p>
+<p>Tambahkan import untuk model Todo sehingga dapat digunakan pada component ini.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Todo } from <span class="hljs-string">&apos;../models/todo.model&apos;</span>;
+</code></pre>
+<p>Buatlah variabel todoList sebagai attribut component tododashboard</p>
+<pre><code class="lang-typescript">todoList: Todo[] = [];
+</code></pre>
+<p>Ubah fungsi handle addtodo menjadi seperti berikut ini</p>
+<pre><code class="lang-typescript">  handleAddTodo(task: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">const</span> itemTodo = <span class="hljs-keyword">new</span> Todo(<span class="hljs-string">&apos;1&apos;</span>, task, <span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">this</span>.todoList.push(itemTodo);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.todoList);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+<p>Pada kode program di atas dibuat sebuah item todo dan menambahkannya ke todoList.</p>
+<p>Berikut ini kode program lengkapnya dari todo.dashboard.component.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+<span class="hljs-keyword">import</span> { Todo } from <span class="hljs-string">&apos;../models/todo.model&apos;</span>;
+@Component({
+  selector: <span class="hljs-string">&apos;todo-dashboard&apos;</span>,
+  styleUrls: [<span class="hljs-string">&apos;todo.dashboard.css&apos;</span>],
+  templateUrl: <span class="hljs-string">&apos;todo.dashboard.html&apos;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoDashboardComponent {
+  todoList: Todo[] = [];
+
+  handleAddTodo(task: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">const</span> itemTodo = <span class="hljs-keyword">new</span> Todo(<span class="hljs-string">&apos;1&apos;</span>, task, <span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">this</span>.todoList.push(itemTodo);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.todoList);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  }
+
+}
+</code></pre>
+<p>Jika server dijalankan dapat dilihat di console bahwa data todo baru ditambahkan ke array todoList</p>
+<p><img src="diagrams/addtodocomfinal.png" alt="&apos;addtodocom&apos;"></p>
 
                                 
                                 </section>
@@ -558,7 +730,7 @@
                 </a>
                 
                 
-                <a href="todo-count-component.md" class="navigation navigation-next " aria-label="Next page: Presentational Component - Todo Count Component">
+                <a href="todo-count-component.html" class="navigation navigation-next " aria-label="Next page: Presentational Component - Todo Count Component">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -569,7 +741,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Presentational Component - Add Todo Component","level":"1.20","depth":1,"next":{"title":"Presentational Component - Todo Count Component","level":"1.21","depth":1,"path":"todo-count-component.md","ref":"todo-count-component.md","articles":[]},"previous":{"title":"Membuat Container Component - Todo Dashboard Component","level":"1.19","depth":1,"path":"todo-dashboard-component.md","ref":"todo-dashboard-component.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"add-todo-component.md","mtime":"2019-02-18T11:21:38.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T15:24:05.548Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Presentational Component - Add Todo Component","level":"1.20","depth":1,"next":{"title":"Presentational Component - Todo Count Component","level":"1.21","depth":1,"path":"todo-count-component.md","ref":"todo-count-component.md","articles":[]},"previous":{"title":"Membuat Container Component - Todo Dashboard Component","level":"1.19","depth":1,"path":"todo-dashboard-component.md","ref":"todo-dashboard-component.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"add-todo-component.md","mtime":"2019-02-21T14:06:43.362Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-21T15:14:40.859Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

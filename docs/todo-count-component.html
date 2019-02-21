@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Component - Container · GitBook</title>
+        <title>Presentational Component - Todo Count Component · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="create-modules.html" />
+    <link rel="next" href="todo-item-component.md" />
     
     
-    <link rel="prev" href="latihan.html" />
+    <link rel="prev" href="add-todo-component.html" />
     
 
     </head>
@@ -297,7 +297,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.17" data-path="component-container.html">
+        <li class="chapter " data-level="1.17" data-path="component-container.html">
             
                 <a href="component-container.html">
             
@@ -349,7 +349,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.21" data-path="todo-count-component.html">
+        <li class="chapter active" data-level="1.21" data-path="todo-count-component.html">
             
                 <a href="todo-count-component.html">
             
@@ -444,7 +444,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Component - Container</a>
+        <a href="." >Presentational Component - Todo Count Component</a>
     </h1>
 </div>
 
@@ -459,74 +459,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="container-vs-presentational">Container vs Presentational</h1>
-<p>Pada arsitektur angular terdapat dua jenis component, yang pertama adalah container dan yang kedua adalah component.</p>
-<ul>
-<li>Container (Container Component)</li>
-<li>Component (Presentational Component)</li>
-</ul>
-<h2 id="container">Container</h2>
-<p>Container adalah component yang berkomunikasi dengan service dan bertugas melakukan rendering terhadap child component nya.</p>
-<h2 id="presentational">Presentational</h2>
-<p>Presentational Component adalah component yang menerima input dari Container dan hanya bertugas menampilkan data, tanpa dapat berkomunikasi dengan service. Component ini memiliki input dan melakukan emmit change melalui event output.</p>
-<h2 id="latihan-container--presentational">Latihan Container / Presentational</h2>
-<p>Perhatikanlah kembali tugas dari materi hari sebelumnya kemudian mari kita membahas bagaimana membagi component pada aplikasi tersebut.</p>
-<p>Pada hari sebelumnya semua kode program masih di simpan di app.component.ts. Pada hari ini kita membahas bagaimana cara memisahkan component menjadi container atau presentational component.</p>
-<p>Dari screenshot aplikasi pada hari pertama anda dapat melihat sebagai berikut :</p>
-<p><img src="diagrams/container-component.png" alt="&apos;img"></p>
-<p>Dari illustrasi ini kita dapat membagi tampilan di atas menjadi beberapa component, yaitu :</p>
-<ul>
-<li>TodoDashboardComponent </li>
-<li>AddTodoComponent</li>
-<li>TodoCountComponent</li>
-<li>TodoItemComponent</li>
-</ul>
-<p>Dari ke empat component ini dapat di pisahkan menjadi Container dan Presentational Component. Yang menjadi Container Component adalah :</p>
-<ul>
-<li>TodoDashboardComponent </li>
-</ul>
-<p>Dan yang menjadi Presentational Component adalah :</p>
-<ul>
-<li>AddTodoComponent</li>
-<li>TodoCountComponent</li>
-<li>TodoItemComponent</li>
-</ul>
-<p>Seperti yang sudah dijelaskan diatas Container Component menjadi yang bertanggungjawab dalam mengatur komunikasi dengan service dan melakukan rendering terhadap child component dalam hal ini Presentational Component.</p>
-<p>Jadi TodoDashboardComponent mempunyai service yang mengatur data, serta mempunyai child AddTodoComponent, TodoCountComponent dan TodoItemComponent.</p>
-<p>AddTodoComponent adalah component yang memiliki tampilan add todo dan mempunyai output yang melakukan event emitter ke appComponent.</p>
-<p>TodoCountComponent adalah component yang memiliki tampilan counter todo. Yang berbeda pada component ini adalah dia tidak memiliki output namun memiliki input berupa data array Todos (proses melakukan count dan menampilkan dilakukan di component ini)</p>
-<p>TodoItemComponent adalah component yang menampilkan satu item component yang memiliki input berupa data satu item todo serta memiliki output berupa event untuk mengupdate status finished / unfinished</p>
-<h2 id="one-way-data-flow">One Way Data Flow</h2>
-<p><img src="diagrams/componentTree.png" alt="&apos;comtree&apos;"></p>
-<p>One way data flow merupakan salah satu cara mengatur alur data pada angular. Selain one way data flow juga ada two way data flow yang sudah dijelaskan pada hari pertama.</p>
-<p>Dengan menggunakan konsep one way data flow perubahan data dari satu Presentational Component baru akan di simpan secara permanent melalui service setelah Presentational Component mengirimkan event emitter ke Container Component, dimana pada Container Component baru data tersebut di persistence kan melalui service.</p>
-<h2 id="latihan-one-way-data-flow">Latihan One Way Data Flow</h2>
-<p>Buatlah One Way Dataflow yang sesuai untuk Container Component dan Presentational Component yang sudah di jabarkan di atas.</p>
-<p>ContainerComponent</p>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th style="text-align:center">Input</th>
-<th style="text-align:right">Output / Event Emitter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TodoDashboardComponent</td>
-<td style="text-align:center">-</td>
-<td style="text-align:right">-</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Service untuk mengambil data todo</li>
-<li>Service untuk delete todo</li>
-<li>Service untuk edit todo</li>
-<li>Service untuk add todo</li>
-<li>Service untuk toggle todo</li>
-</ul>
-<p>Presentational Component</p>
+                                <h1 id="todocountcomponent">TodoCountComponent</h1>
+<p>Selanjutnya kita akan menyelesaikan langkah selanjutnya yaitu membuat presentational component TodoCountComponent. Presentational component ini mempunyai tugas menampilkan jumlah todo yang sudah selesai atau belum selesai. Untuk menyelesaikan component ini lakukanlah langkah percobaan dibawah ini.</p>
+<p>Sesuai dengan desain pada chapter sebelumnya berdasarkan tabel dibawah ini</p>
 <table>
 <thead>
 <tr>
@@ -553,6 +488,90 @@
 </tr>
 </tbody>
 </table>
+<p>TodoCountComponent memiliki input yang bertujuan untuk menghitung Todo yang sudah selesai (finished) atau belum. </p>
+<h2 id="buat-boilerplate-todocountcomponent">Buat Boilerplate TodoCountComponent</h2>
+<p>Bukalah file <code>todo.count.component.ts</code> dan tambahkan kode program berikut ini </p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, Input } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+@Component({
+  selector: <span class="hljs-string">&apos;todo-count&apos;</span>,
+  styleUrls: [],
+  templateUrl: <span class="hljs-string">&apos;todo.count.html&apos;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoCountComponent {
+  <span class="hljs-keyword">constructor</span>() {}
+}
+</code></pre>
+<p>Pada kode program diatas dibuat sebuah boilerplate untuk TodoCountComponent dan yang berbeda dengan AddTodoComponent adalah ditambahkan import untuk Input, dimana input ini adalah decorator yang menyatakan bahwa suatu variabel merupakan input untuk component tersebut.</p>
+<h2 id="buat-tampilan-todo-count-component">Buat Tampilan Todo Count Component</h2>
+<p>Tampilan untuk component ini adalah tampilan yang menunjukkan perhitungan jumlah todo yang sudah selesai atau belum.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;d-flex justify-content-between align-items-center mb-3&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-muted&quot;</span>&gt;</span>Todo List<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;badge badge-danger badge-pill&quot;</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+</code></pre>
+<h2 id="register-component-ke-tododashboardmodule">Register Component ke TodoDashboardModule</h2>
+<p>Selanjutnya daftarkan component ini ke module dengan cara mengimportnya dan menambahkan ke declaration.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { CommonModule } from <span class="hljs-string">&apos;@angular/common&apos;</span>;
+
+<span class="hljs-keyword">import</span> { TodoDashboardComponent } from <span class="hljs-string">&apos;./containers/todo.dashboard.component&apos;</span>;
+<span class="hljs-keyword">import</span> { AddTodoComponent } from <span class="hljs-string">&apos;./component/add-todo/add.todo.component&apos;</span>;
+<span class="hljs-keyword">import</span> { TodoCountComponent } from <span class="hljs-string">&apos;./component/todo-count/todo.count.component&apos;</span>;
+
+@NgModule({
+  declarations: [TodoDashboardComponent, AddTodoComponent, TodoCountComponent],
+  imports: [CommonModule],
+  exports: [TodoDashboardComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoDashboardModule {}
+</code></pre>
+<h2 id="aktifkan-selector-todo-count-di-tododashboard">Aktifkan Selector todo-count di TodoDashboard</h2>
+<p>Bukalah file todo.dashboard.html kemudian aktifkan selector todo-count</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-md-12 order-md-2 mb-4&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">add-todo</span> (<span class="hljs-attr">create</span>)=<span class="hljs-string">&quot;handleAddTodo($event)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">add-todo</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">todo-count</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">todo-count</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;todo-item&gt;&lt;/todo-item&gt;  --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Jika server dijalankan pada kondisi ini tampilan yang didapat seperti gambar dibawah ini, namun ketika diberikan input masih belum memberikan respon apapun terhadap todo count karena belum diberikan input dari todo dashboard.
+<img src="diagrams/todoCountStart.png" alt="&apos;countstart&apos;"></p>
+<h2 id="input-parameter-ke-todocountcomponent">Input Parameter Ke TodoCountComponent</h2>
+<p>Berilah input dari variabel <code>todoList</code> ke component TodoCount dengan menambahkan sebuah property binding di file <code>todo.dashboard.html</code></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-md-12 order-md-2 mb-4&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">add-todo</span> (<span class="hljs-attr">create</span>)=<span class="hljs-string">&quot;handleAddTodo($event)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">add-todo</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">todo-count</span> [<span class="hljs-attr">todos</span>]=<span class="hljs-string">&quot;todoList&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">todo-count</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;todo-item&gt;&lt;/todo-item&gt;  --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h2 id="update-todocountcomponent-untuk-menerima-input">Update TodoCountComponent Untuk Menerima Input</h2>
+<p>PAda langkah sebelumnya sudah di import input decorator namun di kode program sebelumnya decorator ini belum digunakan, selanjutnya gunakanlah decorator ini agar TodoItemComponent dapat menerima input dari TodoDashboardComponent.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, Input } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { Todo } from <span class="hljs-string">&apos;../../models/todo.model&apos;</span>;
+@Component({
+  selector: <span class="hljs-string">&apos;todo-count&apos;</span>,
+  styleUrls: [],
+  templateUrl: <span class="hljs-string">&apos;todo.count.html&apos;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoCountComponent {
+  @Input()
+  todos: Todo[];
+  <span class="hljs-keyword">constructor</span>() {}
+}
+</code></pre>
+<p>Pada kode program di atas ditambahakan terlebih dahulu import model Todo dan ditambahkan decorator input todo.</p>
+<h2 id="menghitung-todo-finished--unfinished-di-todocountcomponent">Menghitung Todo finished / unfinished di TodoCountComponent</h2>
+<p>Untuk menghitung jumlah todo dapat dilakukan dengan menambahkan interpolasi untuk menampilkan size dari variabel todos pada component TodoCount.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;d-flex justify-content-between align-items-center mb-3&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-muted&quot;</span>&gt;</span>Todo List<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;badge badge-danger badge-pill&quot;</span>&gt;</span>{{ todos.length }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+</code></pre>
+<p>Jalankan server dan perhatikan perubahan yang terjadi jika anda menambahkan todo.</p>
+<p><img src="diagrams/todoCountCounter.png" alt="&apos;counter&apos;"></p>
 
                                 
                                 </section>
@@ -580,12 +599,12 @@
 
             
                 
-                <a href="latihan.html" class="navigation navigation-prev " aria-label="Previous page: Latihan">
+                <a href="add-todo-component.html" class="navigation navigation-prev " aria-label="Previous page: Presentational Component - Add Todo Component">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="create-modules.html" class="navigation navigation-next " aria-label="Next page: Create Feature Modules">
+                <a href="todo-item-component.md" class="navigation navigation-next " aria-label="Next page: Presentational Component - Todo Item Component">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -596,7 +615,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Component - Container","level":"1.17","depth":1,"next":{"title":"Create Feature Modules","level":"1.18","depth":1,"path":"create-modules.md","ref":"create-modules.md","articles":[]},"previous":{"title":"Latihan","level":"1.16","depth":1,"path":"latihan.md","ref":"latihan.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component-container.md","mtime":"2019-02-19T13:35:09.952Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-21T15:14:40.859Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Presentational Component - Todo Count Component","level":"1.21","depth":1,"next":{"title":"Presentational Component - Todo Item Component","level":"1.22","depth":1,"path":"todo-item-component.md","ref":"todo-item-component.md","articles":[]},"previous":{"title":"Presentational Component - Add Todo Component","level":"1.20","depth":1,"path":"add-todo-component.md","ref":"add-todo-component.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"todo-count-component.md","mtime":"2019-02-21T15:02:04.374Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-21T15:14:40.859Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

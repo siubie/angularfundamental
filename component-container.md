@@ -25,14 +25,14 @@ Dari screenshot aplikasi pada hari pertama anda dapat melihat sebagai berikut :
 
 Dari illustrasi ini kita dapat membagi tampilan di atas menjadi beberapa component, yaitu :
 
-- TodoComponent 
+- TodoDashboardComponent 
 - AddTodoComponent
 - TodoCountComponent
 - TodoItemComponent
 
 Dari ke empat component ini dapat di pisahkan menjadi Container dan Presentational Component. Yang menjadi Container Component adalah :
 
-- TodoComponent 
+- TodoDashboardComponent 
 
 Dan yang menjadi Presentational Component adalah :
 
@@ -42,7 +42,7 @@ Dan yang menjadi Presentational Component adalah :
 
 Seperti yang sudah dijelaskan diatas Container Component menjadi yang bertanggungjawab dalam mengatur komunikasi dengan service dan melakukan rendering terhadap child component dalam hal ini Presentational Component.
 
-Jadi TodoComponent mempunyai service yang mengatur data, serta mempunyai child AddTodoComponent, TodoCountComponent dan TodoItemComponent.
+Jadi TodoDashboardComponent mempunyai service yang mengatur data, serta mempunyai child AddTodoComponent, TodoCountComponent dan TodoItemComponent.
 
 AddTodoComponent adalah component yang memiliki tampilan add todo dan mempunyai output yang melakukan event emitter ke appComponent.
 
@@ -64,9 +64,9 @@ Buatlah One Way Dataflow yang sesuai untuk Container Component dan Presentationa
 
 ContainerComponent
 
-| Component     | Input | Output / Event Emitter |
-| ------------- | :---: | ---------------------: |
-| TodoComponent |   -   |                      - |
+| Component              | Input | Output / Event Emitter |
+| ---------------------- | :---: | ---------------------: |
+| TodoDashboardComponent |   -   |                      - |
 
 - Service untuk mengambil data todo
 - Service untuk delete todo
@@ -81,3 +81,4 @@ Presentational Component
 | TodoCountComponent | Todos[ ] |                      - |
 | TodoItemComponent  |   Todo   |         ToggleFinished |
 | AddTodoComponent   |    -     |                AddTodo |
+
