@@ -113,3 +113,5 @@ Untuk menghitung jumlah todo dapat dilakukan dengan menambahkan interpolasi untu
 Jalankan server dan perhatikan perubahan yang terjadi jika anda menambahkan todo.
 
 !['counter'](diagrams/todoCountCounter.png)
+
+Sampai pada langkah ini jika ditambahkan sebuah todo baru data todo akan tersimpan di array todoList dan todo count component sudah menampilkan jumlah yang sesuai dengan jumlah todo.
