@@ -24,4 +24,4 @@
 22. [Presentational Component - Todo Item Component](todo-item-component.md)
 23. [immutable state]
 24. [ngOnChange]
-25. [Service dan Observable]
+25. [Services](service.md)
