@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Style Binding · GitBook</title>
+        <title>Services · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,6 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="pipes.html" />
-    
-    
-    <link rel="prev" href="ngFor.html" />
     
 
     </head>
@@ -258,7 +254,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.14" data-path="style.html">
+        <li class="chapter " data-level="1.14" data-path="style.html">
             
                 <a href="style.html">
             
@@ -401,7 +397,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.25" data-path="service.html">
+        <li class="chapter active" data-level="1.25" data-path="service.html">
             
                 <a href="service.html">
             
@@ -444,7 +440,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Style Binding</a>
+        <a href="." >Services</a>
     </h1>
 </div>
 
@@ -459,31 +455,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="style-binding">Style Binding</h1>
-<p>Pada angular untuk menerapkan suatu style kepada sebuah tag html dapat digunakan beberapa opsi antara lain :</p>
-<ol>
-<li>ngStyle</li>
-<li>ngClass</li>
-</ol>
-<h2 id="ngstyle">ngStyle</h2>
-<p>ngStyle digunakan untuk melakukan binding sebuah style ke tag html dengan format css, memanfaatkan javascript properties yang sesuai dengan style css yang bisa dipasang pada sebuah tag. Dengan menggunakan ngStyle kita menulis style nya di template html penulisan style dengan ngStyle ini mirip dengan proses inline style pada html.</p>
-<h2 id="ngclass">ngClass</h2>
-<p>ngClass digunakan untuk melakukan binding sebuah class css ke sebuah tag html, dalam menggunakan ngClass kita menulis class nya di file style dari sebuah component kemudian membinding nya ke tag html</p>
-<h2 id="langkah-percobaan">Langkah Percobaan</h2>
-<p>Untuk memahami penggunaan <code>ngStyle</code> dan <code>ngClass</code> lakukanlah langkah percobaan dibawah ini :</p>
-<p>Bukalah file app.component.css kemudian tambahkan class css seperti pada gambar berikut ini :</p>
-<p><img src="diagrams/ngClass.png" alt="ngclass"></p>
-<p>Kemudian bukalah file app.component.html lalu tambahkan class <code>.done</code> pada tag <code>li</code></p>
-<p><img src="diagrams/ngClass2.png" alt="ngclass"></p>
-<p>Kemudian buka lah aplikasi angular melalui web, pada saat ini anda akan melihat semua task dalam todo list sudah berubah menjadi text yang tercoret, karena dipasang sebuah css <code>text-decoration: line-through</code></p>
-<p><img src="diagrams/ngClass3.png" alt="ngclass"></p>
-<p>Selanjutnya modifikasi file app.component.html untuk menampilkan <code>text-decoration:line-through</code> hanya jika todo memiliki status <code>true</code> hal ini dapat dilakukan dengan menambahkan binding <code>ngClass</code> pada tag <code>li</code> seperti pada gambar dibawah ini.</p>
-<p><img src="diagrams/ngClass4.png" alt="ngclass4"></p>
-<p>Pada kode program di atas kita menambahkan binding ke <code>ngClass</code> dimana argumen dari untuk <code>ngClass</code> ini berupa sebuah object, maka kita memberikan properties <code>done</code> sesuai dengan value dari <code>todo.status</code></p>
-<p><img src="diagrams/ngClass5.png" alt="ngclass5"></p>
-<p>Hal yang sama dapat dilakukan dengan menggunakan sintaks <code>ngStyle</code> untuk mencoba tambahkan kode program ini ke app.component.html anda.</p>
-<p><img src="diagrams/ngClass6.png" alt="ngclass6"></p>
-<p>pada kode program di atas kita melakukan binding dengan menggunakan <code>ngStyle</code> khusus binding dengan <code>ngStyle</code> ini kita menggunakan object yang properties nya adalah properties css dan nilai nya adalah nilai dari css nya bukan class css yang kita buat sebelumnya.</p>
+                                <h1 id="service">Service</h1>
+<h2 id="buat-file-service">buat file service</h2>
+<h2 id="tambah-provider-di-todo-dasboard-module">tambah provider di todo dasboard module</h2>
+<h2 id="dependency-injection">dependency injection</h2>
+<h2 id="ngoninit">ngOnInit</h2>
+<h2 id="import-httpmodule">import httpmodule</h2>
+<p>bedanya DI pake yang butuh import dengan yang gak, <strong>injectable</strong></p>
+<h2 id="observable-subscribe-safe-navigation">observable subscribe safe navigation</h2>
+<h2 id="get">get</h2>
+<h2 id="post">post</h2>
+<h2 id="delete">delete</h2>
 
                                 
                                 </section>
@@ -511,14 +493,6 @@
 
             
                 
-                <a href="ngFor.html" class="navigation navigation-prev " aria-label="Previous page: Perulangan">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="pipes.html" class="navigation navigation-next " aria-label="Next page: Pipes">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -527,7 +501,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Style Binding","level":"1.14","depth":1,"next":{"title":"Pipes","level":"1.15","depth":1,"path":"pipes.md","ref":"pipes.md","articles":[]},"previous":{"title":"Perulangan","level":"1.13","depth":1,"path":"ngFor.md","ref":"ngFor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"style.md","mtime":"2019-02-02T05:25:54.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-04T12:54:03.405Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Services","level":"1.25","depth":1,"previous":{"title":"[ngOnChange]","level":"1.24","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"service.md","mtime":"2019-03-01T00:19:54.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-04T12:54:03.405Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
