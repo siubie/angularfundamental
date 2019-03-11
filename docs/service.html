@@ -456,9 +456,93 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="service">Service</h1>
+<p>Seperti yang sudah dijelaskan pada chapter sebelumnya bahwa sebuah container component dapat terhubung dengan sebuah service yang akan menghubungkan component tersebut dengan data yang digunakan baik melalui sebuah REST API, Local Storage, Json file atau datasource lainnya.</p>
 <h2 id="buat-file-service">buat file service</h2>
+<p>Langkah pertama untuk membuat service adalah dengan membuat sebuah file baru dengan nama <code>todo.dashboard.service</code> pada module <code>TodoDashboard</code>.</p>
+<pre><code>.
+&#x251C;&#x2500;&#x2500; component
+&#x2502;   &#x251C;&#x2500;&#x2500; add-todo
+&#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; add.todo.component.ts
+&#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; add.todo.html
+&#x2502;   &#x251C;&#x2500;&#x2500; todo-count
+&#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; todo.count.component.ts
+&#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; todo.count.html
+&#x2502;   &#x2514;&#x2500;&#x2500; todo-item
+&#x2502;       &#x251C;&#x2500;&#x2500; todo.item.component.ts
+&#x2502;       &#x2514;&#x2500;&#x2500; todo.item.html
+&#x251C;&#x2500;&#x2500; containers
+&#x2502;   &#x251C;&#x2500;&#x2500; todo.dashboard.component.ts
+&#x2502;   &#x251C;&#x2500;&#x2500; todo.dashboard.css
+&#x2502;   &#x2514;&#x2500;&#x2500; todo.dashboard.html
+&#x251C;&#x2500;&#x2500; models
+&#x2502;   &#x2514;&#x2500;&#x2500; todo.model.ts
+&#x251C;&#x2500;&#x2500; todo.dashboard.module.ts
+&#x2514;&#x2500;&#x2500; todo.dashboard.service.ts -&gt; file service baru
+</code></pre><p>pada file tersebut tambahkan kode program berikut ini.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoDashboardService {
+  <span class="hljs-keyword">constructor</span>() {}
+
+  getTodos() {}
+
+  createTodo() {}
+
+  updateTodo() {}
+}
+</code></pre>
+<p>Kode program diatas berisi skeleton code untuk service yang dapat digunakan</p>
 <h2 id="tambah-provider-di-todo-dasboard-module">tambah provider di todo dasboard module</h2>
+<p>Setelah membuat file service, agar service ini dapat digunakan oleh module TodoDashboard service ini harus di import sebagai <code>provider</code> pada module TodoDashboard.</p>
+<p>Untuk mengimport nya silahkan buka file todo.dashboard.module.ts, kemudian tambahkan import untuk file todo.dashboard.service.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { CommonModule } from <span class="hljs-string">&quot;@angular/common&quot;</span>;
+
+<span class="hljs-keyword">import</span> { TodoDashboardComponent } from <span class="hljs-string">&quot;./containers/todo.dashboard.component&quot;</span>;
+<span class="hljs-keyword">import</span> { AddTodoComponent } from <span class="hljs-string">&quot;./component/add-todo/add.todo.component&quot;</span>;
+<span class="hljs-keyword">import</span> { TodoCountComponent } from <span class="hljs-string">&quot;./component/todo-count/todo.count.component&quot;</span>;
+<span class="hljs-keyword">import</span> { TodoItemComponent } from <span class="hljs-string">&quot;./component/todo-item/todo.item.component&quot;</span>;
+<span class="hljs-keyword">import</span> { TodoDashboardService } from <span class="hljs-string">&quot;./todo.dashboard.service&quot;</span>;
+@NgModule({
+  declarations: [
+    TodoDashboardComponent,
+    AddTodoComponent,
+    TodoCountComponent,
+    TodoItemComponent
+  ],
+  imports: [CommonModule, HttpClientModule],
+  exports: [TodoDashboardComponent],
+  providers: [TodoDashboardService]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoDashboardModule {}
+</code></pre>
+<p>pada kode program diatas ditambahkan import TodoDashboardService dan provider pada decorator @NgModule</p>
 <h2 id="dependency-injection">dependency injection</h2>
+<p>Setelah menambahkan provider di TodoDashboardModule, TodoDashboardService dapat digunakan di component yang berada di dalam module Todo Dashboard.</p>
+<p>Untuk mempermudah penggunannya digunakan sebuah teknik dependency injection di TodoDashboardComponent. Caranya dengan mengimport TodoDashboardService ke TodoDashboardComponent dan menjadikannya sebagai parameter di construktor component.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { Todo } from <span class="hljs-string">&quot;../models/todo.model&quot;</span>;
+<span class="hljs-keyword">import</span> { TodoDashboardService } from <span class="hljs-string">&quot;../todo.dashboard.service&quot;</span>;
+@Component({
+  selector: <span class="hljs-string">&quot;todo-dashboard&quot;</span>,
+  styleUrls: [<span class="hljs-string">&quot;todo.dashboard.css&quot;</span>],
+  templateUrl: <span class="hljs-string">&quot;todo.dashboard.html&quot;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodoDashboardComponent <span class="hljs-keyword">implements</span> OnInit {
+  todoList: Todo[] = [];
+  <span class="hljs-keyword">constructor</span>(private todoDashboardService: TodoDashboardService) {}
+
+  ngOnInit() {
+      ...
+  }
+
+  handleAddTodo(task: <span class="hljs-built_in">string</span>) {
+      ...
+  }
+
+  handleToggleFinished(todo: Todo) {
+      ...
+  }
+}
+</code></pre>
 <h2 id="ngoninit">ngOnInit</h2>
 <h2 id="import-httpmodule">import httpmodule</h2>
 <p>bedanya DI pake yang butuh import dengan yang gak, <strong>injectable</strong></p>
@@ -501,7 +585,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Services","level":"1.25","depth":1,"previous":{"title":"[ngOnChange]","level":"1.24","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"service.md","mtime":"2019-03-01T00:19:54.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-04T12:54:03.405Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Services","level":"1.25","depth":1,"previous":{"title":"[ngOnChange]","level":"1.24","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"service.md","mtime":"2019-03-11T13:35:19.173Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-11T13:37:03.583Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
