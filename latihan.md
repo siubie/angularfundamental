@@ -1,3 +1,3 @@
 # Latihan
 
-Materi terakhir pada hari ini adalah latihan membuat sebuah aplikasi todo list sederhana dengan angular.
+Untuk latihan buatlah sebuah aplikasi todo dengan menggunakan materi yang didapatkan pada materi sebelumnya.
