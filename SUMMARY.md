@@ -22,6 +22,4 @@
 20. [Presentational Component - Add Todo Component](add-todo-component.md)
 21. [Presentational Component - Todo Count Component](todo-count-component.md)
 22. [Presentational Component - Todo Item Component](todo-item-component.md)
-23. [immutable state]
-24. [ngOnChange]
-25. [Services](service.md)
+23. [Services](service.md)
