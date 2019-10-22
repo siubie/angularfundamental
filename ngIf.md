@@ -50,7 +50,7 @@ Jalankanlah server angular kemudian perhatikan bahwa kedua kode program `*ngIf` 
 ![ngIf6](diagrams/ngIf6.png)
 
 ```html
-<div *ngIf="title.length >= 4">Loading search result for ... : {{ title }}</div>
+<div *ngIf="title.length >= 4">Membuat pencarian pada ... : {{ title }}</div>
 <ng-template [ngIf]="title.length >= 4">
   <div>Loading Search result for ... :{{ title }}</div>
 </ng-template>
