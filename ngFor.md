@@ -37,3 +37,5 @@ setelah itu bukalah web browser dan liat perubahan apa yang terjadi.
 ## Challenge Time
 
 > NgFor dan NgIf dapat digabung dalam template html, untuk memahaminya ubahlah tampilan Todo List untuk hanya menampilkan todo yang memiliki id genap atau yang ganjil saja.
+
+selamat mencoba !!!
