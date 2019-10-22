@@ -7,15 +7,15 @@
 
 Versi node js yang dibutuhkan untuk dapat menjalankan aplikasi angular minimal adalah versi 8.x atau 10.x.
 
-## Install nodejs Windows
+## Install nodejs pada sistem operasi Windows
 
 Berikut ini langkah installasi nodejs untuk sistem operasi windows :
 
-## Install nodejs Linux
+## Install nodejs pada sistem operasi Linux
 
 Berikut ini langkah installasi nodejs untuk sistem operasi linux :
 
-## Install nodejs MacOs
+## Install nodejs pada sistem operasi MacOs
 
 Berikut ini langkah installasi nodejs untuk sistem operasi macOs :
 
